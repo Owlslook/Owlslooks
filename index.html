@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OWLS LOOK - Economía y Sociedad</title>
+  <title>OWLS LOOK - Moda Circular & Sustentabilidad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -26,7 +26,7 @@
     }
 
     .container {
-      max-width: 750px;
+      max-width: 800px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -34,17 +34,18 @@
       gap: 2rem;
     }
 
-    /* Logo Wrapper */
-    .logo-container {
+    /* 1. PORTADA DE ENTRADA */
+    .hero-section {
       background-color: #ffffff;
-      padding: 2.5rem 2rem;
-      border-radius: 8px;
+      padding: 3rem 2rem;
+      border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       position: relative;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
       border: 1px solid rgba(181, 148, 96, 0.2);
     }
 
@@ -54,14 +55,14 @@
     }
 
     .sparkle-top-right {
-      top: 15px;
-      right: 20px;
+      top: 20px;
+      right: 25px;
       font-size: 1.8rem;
     }
 
     .sparkle-bottom-left {
-      bottom: 15px;
-      left: 20px;
+      bottom: 20px;
+      left: 25px;
       font-size: 1.8rem;
     }
 
@@ -75,7 +76,7 @@
 
     .brand-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 400;
       letter-spacing: 0.25em;
       color: #3a2e2b;
@@ -83,7 +84,7 @@
     }
 
     .owl-icon {
-      width: 65px;
+      width: 70px;
       height: auto;
       fill: none;
       stroke: #b59460;
@@ -95,43 +96,13 @@
     .slogan {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       color: #5c4a43;
       margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* Info Section / Trabajo Escolar */
-    .content-box {
-      background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      width: 100%;
-      text-align: left;
-      border: 1px solid rgba(181, 148, 96, 0.2);
-    }
-
-    .content-box h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: #3a2e2b;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #b59460;
-      padding-bottom: 0.5rem;
-    }
-
-    .content-box p, .content-box li {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #5c4a43;
-      margin-bottom: 0.8rem;
-    }
-
-    .content-box ul {
-      padding-left: 1.5rem;
-    }
-
-    /* Instagram Button */
+    /* BOTÓN INSTAGRAM */
     .ig-button {
       display: inline-flex;
       align-items: center;
@@ -147,7 +118,6 @@
       border-radius: 30px;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(58, 46, 43, 0.15);
-      margin-top: 1rem;
     }
 
     .ig-button:hover {
@@ -162,9 +132,114 @@
       fill: currentColor;
     }
 
+    /* SECCIONES DE CONTENIDO GENERALES */
+    .content-box {
+      background-color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(181, 148, 96, 0.2);
+    }
+
+    .content-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #3a2e2b;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #b59460;
+      padding-bottom: 0.5rem;
+    }
+
+    .content-box p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #5c4a43;
+      margin-bottom: 1rem;
+    }
+
+    /* EMPRESAS ASOCIADAS */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .partner-category {
+      background-color: #f7f5f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 3px solid #b59460;
+    }
+
+    .partner-category h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: #3a2e2b;
+      margin-bottom: 0.8rem;
+    }
+
+    .partner-category ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .partner-category li {
+      font-size: 0.9rem;
+      color: #6b5851;
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .partner-category li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: #b59460;
+      font-size: 0.7rem;
+      top: 2px;
+    }
+
+    /* PRODUCTOS DESTACADOS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-card {
+      background-color: #f7f5f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid rgba(181, 148, 96, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #3a2e2b;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-card p {
+      font-size: 0.9rem;
+      color: #6b5851;
+      margin-bottom: 0;
+    }
+
     @media (max-width: 480px) {
       .brand-text {
-        font-size: 2rem;
+        font-size: 2.1rem;
         letter-spacing: 0.15em;
       }
       .owl-icon {
@@ -179,8 +254,9 @@
 <body>
 
   <div class="container">
-    <!-- Logo Header Container -->
-    <div class="logo-container">
+    
+    <!-- 1. PORTADA DE ENTRADA -->
+    <header class="hero-section">
       <span class="sparkle sparkle-top-right">✦</span>
       <span class="sparkle sparkle-bottom-left">✦</span>
 
@@ -208,27 +284,73 @@
         <svg class="ig-icon" viewBox="0 0 24 24">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
-        Ver en Instagram
-      </div>
-    </div>
+        Visítanos en Instagram
+      </a>
+    </header>
 
-    <!-- Contenido del Trabajo Escolar -->
-    <div class="content-box">
-      <h2>Proyecto: Moda Circular & Embalaje Sustentable</h2>
-      <p><strong>Asignatura:</strong> Economía y Sociedad | <strong>Colegio Bautista Concepción</strong></p>
+    <!-- 2. DE QUÉ TRATA Y QUÉ VENDEMOS -->
+    <section class="content-box">
+      <h2>¿De qué trata OWLS LOOK?</h2>
+      <p>Somos un proyecto enfocado en la moda circular y la economía sostenible[span_1](start_span)[span_1](end_span). Promovemos el <em>Upcycling</em> y la transformación creativa de piezas para reducir el impacto ambiental de la industria textil[span_2](start_span)[span_2](end_span).</p>
+      <p><strong>¿Qué vendemos?</strong> Prendas de vestir rediseñadas, calzado y accesorios exclusivos que combinan diseño de vanguardia con un fuerte compromiso ecológico.</p>
+    </section>
+
+    <!-- 3. EMPRESAS ASOCIADAS -->
+    <section class="content-box">
+      <h2>Empresas Asociadas</h2>
+      <p>Trabajamos en colaboración con marcas seleccionadas que comparten nuestra visión de estilo y sustentabilidad:</p>
       
-      <br>
-      <h3>✨ 1. Upcycling (Transformación Textil)</h3>
-      <p>Reutilizamos ropa vieja dándole una segunda vida mediante la transformación directa de prendas, fusión de distintas piezas y el corte de moldes nuevos desde cero para reducir residuos textiles.</p>
+      <div class="partners-grid">
+        <div class="partner-category">
+          <h3>Calzado</h3>
+          <ul>
+            <li>Begoña</li>
+            <li>Degas</li>
+            <li>Eda Mazini</li>
+          </ul>
+        </div>
 
-      <br>
-      <h3>📦 2. Embalajes Biodegradables de Ropa</h3>
-      <p>Inspirados en modelos de economía circular industrial (como el concepto de "madera textil"), diseñamos empaques resistentes combinando cartón común con retazos de ropa 100% de algodón o lino[span_5](start_span)[span_5](end_span).</p>
+        <div class="partner-category">
+          <h3>Ropa</h3>
+          <ul>
+            <li>Caloe</li>
+            <li>Amalia</li>
+            <li>Amoramar</li>
+            <li>Fémina</li>
+          </ul>
+        </div>
 
-      <br>
-      <h3>🧪 3. Receta del Pegamento Casero Ecológico</h3>
-      <p>Utilizamos una mezcla de almidón de maíz (maicena), vinagre y glicerina para unir los materiales de forma orgánica. Este empaque se degrada por completo en el jardín o compostera en un plazo de 2 a 4 meses sin dejar microplásticos[span_6](start_span)[span_6](end_span).</p>
-    </div>
+        <div class="partner-category">
+          <h3>Joyas</h3>
+          <ul>
+            <li>Knot & Lume</li>
+            <li>Perfect Match</li>
+            <li>Zhennice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PRODUCTOS DESTACADOS -->
+    <section class="content-box">
+      <h2>Productos Destacados</h2>
+      <p>Conoce las piezas principales y selecciones especiales de nuestra propuesta de estilo:</p>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <h3>Falda Denim Upcycling</h3>
+          <p>Prenda única rediseñada a partir de jeans en desuso, fusionando estilo y cero desperdicio[span_3](start_span)[span_3](end_span).</p>
+        </div>
+        <div class="product-card">
+          <h3>Calzado Exclusivo</h3>
+          <p>Diseños vanguardistas de nuestras marcas asociadas para completar cualquier look con personalidad.</p>
+        </div>
+        <div class="product-card">
+          <h3>Joyas y Accesorios</h3>
+          <p>Detalles únicos y sutiles diseñados para realzar tu expresión personal todos los días.</p>
+        </div>
+      </div>
+    </section>
 
   </div>
 
