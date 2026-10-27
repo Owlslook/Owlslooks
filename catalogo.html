@@ -1,1 +1,302 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo & Precios - OWLS LOOK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f7f5f0;
+      color: #3a2e2b;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 850px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* HEADER / VOLVER */
+    .catalog-header {
+      background-color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      text-align: center;
+      border: 1px solid rgba(181, 148, 96, 0.2);
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #b59460;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #3a2e2b;
+    }
+
+    .catalog-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: #3a2e2b;
+      margin-bottom: 0.5rem;
+    }
+
+    .catalog-subtitle {
+      font-size: 0.95rem;
+      color: #6b5851;
+    }
+
+    /* GRID DE PRODUCTOS DEL CATÁLOGO */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      width: 100%;
+    }
+
+    .catalog-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(181, 148, 96, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background-color: #ebe7de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b59460;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid rgba(181, 148, 96, 0.15);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .product-tag {
+      font-size: 0.75rem;
+      color: #b59460;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: #3a2e2b;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: #6b5851;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f0eae1;
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #3a2e2b;
+    }
+
+    .btn-buy {
+      background-color: #3a2e2b;
+      color: #f7f5f0;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background-color: #b59460;
+    }
+
+    /* FOOTER */
+    .footer-copy {
+      font-size: 0.75rem;
+      color: #a89a93;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="catalog-header">
+      <a href="index.html" class="back-link">← Volver al Inicio</a>
+      <h1 class="catalog-title">Catálogo de Productos & Precios</h1>
+      <p class="catalog-subtitle">Colección exclusiva de Moda Circular & Marcas Asociadas</p>
+    </header>
+
+    <!-- GRID DE PRODUCTOS -->
+    <main class="catalog-grid">
+
+      <!-- PRODUCTO 1 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ OWLS LOOK ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Ropa Upcycling</span>
+            <h2 class="product-name">Falda Denim Upcycling</h2>
+            <p class="product-desc">Rediseñada a partir de pantalones jeans en desuso. Cada prenda es única e irrepetible.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.990</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20la%20Falda%20Denim%20Upcycling" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 2 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ BEGOÑA / DEGAS ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Calzado</span>
+            <h2 class="product-name">Zapato Begoña Premium</h2>
+            <p class="product-desc">Calzado de alta durabilidad y diseño de vanguardia de nuestra marca asociada.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$34.990</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesan%20los%20Zapatos%20Begoña" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 3 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ CALOE / AMALIA ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Ropa</span>
+            <h2 class="product-name">Blusa Sustentable Caloe</h2>
+            <p class="product-desc">Confección ligera con fibras seleccionadas y acabados elegantes.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$15.990</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20la%20Blusa%20Sustentable%20Caloe" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 4 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ KNOT & LUME ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas</span>
+            <h2 class="product-name">Set de Joyas Knot & Lume</h2>
+            <p class="product-desc">Accesorios sutiles y elegantes diseñados para resaltar tu personalidad diaria.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$12.990</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20Set%20de%20Joyas%20Knot" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 5 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ OWLS LOOK ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Sustentabilidad</span>
+            <h2 class="product-name">Caja Embalaje Biodegradable</h2>
+            <p class="product-desc">Empaque hecho de cartón y ropa 100% de algodón pegado con maicena.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$3.500</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20Empaque%20Biodegradable" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 6 -->
+      <article class="catalog-card">
+        <div class="card-img-placeholder">✦ PERFECT MATCH ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas</span>
+            <h2 class="product-name">Collar Perfect Match</h2>
+            <p class="product-desc">Diseño exclusivo en dorado mate en alianza con marcas locales.</p>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$9.990</span>
+            <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20Collar%20Perfect%20Match" target="_blank" class="btn-buy">Pedir por WA</a>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <p class="footer-copy">© OWLS LOOK — Todos los precios incluyen IVA.</p>
+
+  </div>
+
+</body>
+</html>
