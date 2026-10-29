@@ -74,7 +74,7 @@
       margin-bottom: 1rem;
     }
 
-    /* ESTRELLAS Y PROMEDIO GENERAL */
+    /* VALORACIÓN GLOBAL */
     .global-rating {
       display: inline-flex;
       align-items: center;
@@ -142,10 +142,6 @@
       background-color: #ffffff;
     }
 
-    .btn-fav.active {
-      color: #e63946;
-    }
-
     .card-img {
       width: 100%;
       height: 240px;
@@ -196,15 +192,22 @@
     }
 
     .stars-interactive {
-      cursor: pointer;
-      color: #ccc;
+      color: #b59460;
       font-size: 1rem;
       letter-spacing: 2px;
-      transition: color 0.2s;
     }
 
-    .stars-interactive span:hover,
-    .stars-interactive span:hover ~ span {
+    .star-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #ccc;
+      transition: color 0.2s;
+      padding: 0;
+    }
+
+    .star-btn.rated, .star-btn:hover {
       color: #b59460;
     }
 
@@ -244,7 +247,7 @@
       transform: scale(0.95);
     }
 
-    /* BOTÓN FLOTANTE DEL CARRITO */
+    /* BOTÓN FLOTANTE CARRITO */
     .cart-float-btn {
       position: fixed;
       bottom: 25px;
@@ -286,7 +289,7 @@
       100% { transform: scale(1); }
     }
 
-    /* MODAL DEL CARRITO */
+    /* MODAL CARRITO */
     .cart-modal-overlay {
       position: fixed;
       top: 0;
@@ -409,7 +412,6 @@
       color: #3a2e2b;
     }
 
-    /* BOTONES DE PEDIDO (WHATSAPP E INSTAGRAM) */
     .checkout-buttons {
       display: flex;
       flex-direction: column;
@@ -480,7 +482,7 @@
       
       <!-- VALORACIÓN GLOBAL PÚBLICA -->
       <div class="global-rating">
-        ⭐ Promedio de la tienda: <span id="globalRatingScore">4.9</span> / 5.0 (<span id="totalReviewsCount">18</span> valoraciones)
+        ⭐ Promedio general de la tienda: <span id="globalRatingScore">4.9</span> / 5.0 (<span id="totalReviewsCount">18</span> valoraciones públicas)
       </div>
     </header>
 
@@ -488,8 +490,8 @@
     <main class="catalog-grid" id="productGrid">
 
       <!-- PRODUCTO 1 -->
-      <article class="catalog-card" data-id="1">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_1">
+        <button class="btn-fav" onclick="toggleFavorite('prod_1', this)">🤍</button>
         <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe" class="card-img">
         <div class="card-body">
           <div>
@@ -498,9 +500,13 @@
             <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_1">
+                <button class="star-btn" onclick="rateProduct('prod_1', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_1', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_1', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_1', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_1', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">4.8</strong>)</span>
             </div>
@@ -513,8 +519,8 @@
       </article>
 
       <!-- PRODUCTO 2 -->
-      <article class="catalog-card" data-id="2">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_2">
+        <button class="btn-fav" onclick="toggleFavorite('prod_2', this)">🤍</button>
         <img src="IMG-20261020-WA0014.jpg" alt="Colección Amalia" class="card-img">
         <div class="card-body">
           <div>
@@ -523,9 +529,13 @@
             <p class="product-desc">Estilo sofisticado y responsable certificado de origen nacional.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_2">
+                <button class="star-btn" onclick="rateProduct('prod_2', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_2', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_2', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_2', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_2', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
             </div>
@@ -538,8 +548,8 @@
       </article>
 
       <!-- PRODUCTO 3 -->
-      <article class="catalog-card" data-id="3">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_3">
+        <button class="btn-fav" onclick="toggleFavorite('prod_3', this)">🤍</button>
         <img src="IMG-20261020-WA0013.jpg" alt="Colección Amoramar" class="card-img">
         <div class="card-body">
           <div>
@@ -548,9 +558,13 @@
             <p class="product-desc">Diseños vanguardistas que combinan tendencia y economía circular.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_3">
+                <button class="star-btn" onclick="rateProduct('prod_3', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_3', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_3', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_3', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_3', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
             </div>
@@ -563,8 +577,8 @@
       </article>
 
       <!-- PRODUCTO 4 -->
-      <article class="catalog-card" data-id="4">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_4">
+        <button class="btn-fav" onclick="toggleFavorite('prod_4', this)">🤍</button>
         <img src="IMG-20261020-WA0009.jpg" alt="Botas Begoña" class="card-img">
         <div class="card-body">
           <div>
@@ -573,9 +587,13 @@
             <p class="product-desc">Durabilidad, comodidad y elegancia en cada pisada con sello nacional.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_4">
+                <button class="star-btn" onclick="rateProduct('prod_4', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_4', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_4', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_4', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_4', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
             </div>
@@ -588,8 +606,8 @@
       </article>
 
       <!-- PRODUCTO 5 -->
-      <article class="catalog-card" data-id="5">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_5">
+        <button class="btn-fav" onclick="toggleFavorite('prod_5', this)">🤍</button>
         <img src="IMG-20261020-WA0007.jpg" alt="Botas Degas" class="card-img">
         <div class="card-body">
           <div>
@@ -598,9 +616,13 @@
             <p class="product-desc">Modelos exclusivos diseñados para completar cualquier look con personalidad.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_5">
+                <button class="star-btn" onclick="rateProduct('prod_5', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_5', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_5', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_5', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_5', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">4.7</strong>)</span>
             </div>
@@ -613,8 +635,8 @@
       </article>
 
       <!-- PRODUCTO 6 -->
-      <article class="catalog-card" data-id="6">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
+      <article class="catalog-card" data-id="prod_6">
+        <button class="btn-fav" onclick="toggleFavorite('prod_6', this)">🤍</button>
         <img src="IMG-20261020-WA0006.jpg" alt="Botas Rojas Eda Manzinni" class="card-img">
         <div class="card-body">
           <div>
@@ -623,9 +645,13 @@
             <p class="product-desc">Excelencia en manufactura y diseño superior para el mercado chileno.</p>
             
             <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              <span>Valoración:</span>
+              <div class="stars-interactive" data-prod="prod_6">
+                <button class="star-btn" onclick="rateProduct('prod_6', 1)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_6', 2)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_6', 3)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_6', 4)">★</button>
+                <button class="star-btn" onclick="rateProduct('prod_6', 5)">★</button>
               </div>
               <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
             </div>
@@ -633,31 +659,6 @@
           <div class="card-footer">
             <span class="product-price">$130.000</span>
             <button class="btn-add" onclick="addToCart('Botas Rojas Eda Manzinni', 130000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- PRODUCTO 7 -->
-      <article class="catalog-card" data-id="7">
-        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
-        <img src="IMG-20261026-WA0008.jpg" alt="Collares Multi-Capa Knot & Lume" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Knot & Lume</span>
-            <h2 class="product-name">Collares Multi-Capa Estrellas</h2>
-            <p class="product-desc">Detalles sutiles y sofisticados para realzar tu expresión personal.</p>
-            
-            <div class="product-rating-box">
-              <span>Calificar:</span>
-              <div class="stars-interactive" onclick="rateProduct(event, this)">
-                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">4.8</strong>)</span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$20.000</span>
-            <button class="btn-add" onclick="addToCart('Collares Multi-Capa Knot & Lume', 20000)">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -708,6 +709,12 @@
 
   <script>
     let cart = [];
+
+    // Cargar datos guardados al iniciar la página
+    document.addEventListener("DOMContentLoaded", () => {
+      loadFavoritesState();
+      loadRatingsState();
+    });
 
     function addToCart(title, price) {
       const existing = cart.find(item => item.title === title);
@@ -773,35 +780,88 @@
       }
     }
 
-    /* BOTÓN CORAZÓN (GUARDAR FAVORITO) */
-    function toggleFavorite(btn) {
-      if (btn.textContent === '🤍') {
-        btn.textContent = '❤️';
-        btn.classList.add('active');
-      } else {
+    /* GESTIÓN DE FAVORITOS (PERSISTENTE CON LOCALSTORAGE) */
+    function toggleFavorite(prodId, btn) {
+      let favorites = JSON.parse(localStorage.getItem('owls_favorites')) || {};
+      
+      if (favorites[prodId]) {
+        delete favorites[prodId];
         btn.textContent = '🤍';
-        btn.classList.remove('active');
+      } else {
+        favorites[prodId] = true;
+        btn.textContent = '❤️';
       }
+      localStorage.setItem('owls_favorites', JSON.stringify(favorites));
     }
 
-    /* SISTEMA DE VALORACIÓN Y PROMEDIO PÚBLICO */
-    function rateProduct(event, container) {
-      const clickedStar = event.target;
-      if (!clickedStar.dataset.value) return;
+    function loadFavoritesState() {
+      let favorites = JSON.parse(localStorage.getItem('owls_favorites')) || {};
+      document.querySelectorAll('.catalog-card').forEach(card => {
+        let prodId = card.dataset.id;
+        let btn = card.querySelector('.btn-fav');
+        if (favorites[prodId]) {
+          btn.textContent = '❤️';
+        }
+      });
+    }
+
+    /* GESTIÓN DE VALORACIONES TRANSPARENTES (UNA VEZ POR DISPOSITIVO) */
+    function rateProduct(prodId, stars) {
+      let userRatings = JSON.parse(localStorage.getItem('owls_user_ratings')) || {};
       
-      const ratingVal = parseInt(clickedStar.dataset.value);
-      const card = container.closest('.catalog-card');
+      if (userRatings[prodId]) {
+        alert('⚠️ Ya has valorado este producto anteriormente. Para mantener la transparencia pública, solo se permite una valoración por dispositivo.');
+        return;
+      }
+
+      // Guardar voto del usuario
+      userRatings[prodId] = stars;
+      localStorage.setItem('owls_user_ratings', JSON.stringify(userRatings));
+
+      const card = document.querySelector(`[data-id="${prodId}"]`);
       const scoreNumElem = card.querySelector('.score-num');
       
-      // Actualiza nota interna del producto de forma simulada realista
       let currentScore = parseFloat(scoreNumElem.textContent);
-      let newScore = ((currentScore + ratingVal) / 2).toFixed(1);
+      let newScore = ((currentScore + stars) / 2).toFixed(1);
       scoreNumElem.textContent = newScore;
-      
-      alert(`¡Gracias por tu valoración de ${ratingVal} estrellas! Tu opinión ayuda a mantener el promedio público de la tienda.`);
-      
-      // Actualiza también de forma global el promedio de la tienda
+
+      // Guardar nuevo puntaje visual en localStorage
+      let scoresStore = JSON.parse(localStorage.getItem('owls_scores')) || {};
+      scoresStore[prodId] = newScore;
+      localStorage.setItem('owls_scores', JSON.stringify(scoresStore));
+
+      lockProductRating(card, stars);
       updateGlobalRating();
+      alert(`✨ ¡Gracias! Tu valoración de ${stars} estrellas ha sido registrada y publicada exitosamente.`);
+    }
+
+    function loadRatingsState() {
+      let userRatings = JSON.parse(localStorage.getItem('owls_user_ratings')) || {};
+      let scoresStore = JSON.parse(localStorage.getItem('owls_scores')) || {};
+
+      document.querySelectorAll('.catalog-card').forEach(card => {
+        let prodId = card.dataset.id;
+        
+        if (scoresStore[prodId]) {
+          card.querySelector('.score-num').textContent = scoresStore[prodId];
+        }
+
+        if (userRatings[prodId]) {
+          lockProductRating(card, userRatings[prodId]);
+        }
+      });
+      updateGlobalRating();
+    }
+
+    function lockProductRating(card, ratedStars) {
+      const starBtns = card.querySelectorAll('.star-btn');
+      starBtns.forEach((btn, idx) => {
+        if (idx < ratedStars) {
+          btn.classList.add('rated');
+          btn.textContent = '★';
+        }
+        btn.disabled = true; // Bloquea para evitar cambios infinitos
+      });
     }
 
     function updateGlobalRating() {
@@ -809,10 +869,7 @@
       let sum = 0;
       scores.forEach(s => sum += parseFloat(s.textContent));
       let globalAvg = (sum / scores.length).toFixed(1);
-      
       document.getElementById('globalRatingScore').textContent = globalAvg;
-      let totalRev = document.getElementById('totalReviewsCount');
-      totalRev.textContent = parseInt(totalRev.textContent) + 1;
     }
 
     /* PEDIDO POR WHATSAPP */
@@ -833,32 +890,35 @@
       window.open(`https://wa.me/56912345678?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    /* PEDIDO / MENSAJE A INSTAGRAM */
+    /* PEDIDO POR INSTAGRAM CON COPIA AUTOMÁTICA DE CÁLCULOS */
     function sendInstagramOrder() {
       if (cart.length === 0) {
         alert('Tu carrito está vacío.');
         return;
       }
 
-      let text = "Hola @somos.owlslook 🦉✨ Me interesan estos productos de su catálogo:\n\n";
+      let text = "Hola @somos.owlslook 🦉✨ Me interesa comprar los siguientes productos de su catálogo:\n\n";
       cart.forEach(item => {
         text += `• ${item.qty}x ${item.title} ($${(item.price * item.qty).toLocaleString('es-CL')})\n`;
       });
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      text += `\nTotal: $${total.toLocaleString('es-CL')}. ¿Disponibilidad y coordinación de entrega?`;
+      text += `\nTotal estimado: $${total.toLocaleString('es-CL')}.\n¿Me indican cómo coordinamos el pago y el envío?`;
 
-      // Redirige al perfil o chat de Instagram
-      window.open(`https://www.instagram.com/direct/t/`, '_blank');
-      
-      // Copia el texto automático al portapapeles para que la usuaria solo tenga que pegarlo en el DM
+      // Copiar al portapapeles y abrir Instagram
       navigator.clipboard.writeText(text).then(() => {
-        alert("¡Detalle del carrito copiado al portapapeles! Pégalo en el Mensaje Directo (DM) de Instagram para enviar tu pedido.");
+        alert("📋 ¡Resumen y cálculos del pedido copiados al portapapeles con éxito!\n\nA continuación se abrirá Instagram. Pega el mensaje en el chat directo (DM) para enviarlo a la tienda.");
+        window.open('https://www.instagram.com/direct/t/', '_blank');
+      }).catch(err => {
+        // Fallback si el portapapeles falla en algún navegador móvil antiguo
+        prompt("Copia este texto para tu pedido de Instagram:", text);
+        window.open('https://www.instagram.com/direct/t/', '_blank');
       });
     }
   </script>
 
 </body>
 </html>
+
 
 
