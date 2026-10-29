@@ -178,7 +178,38 @@
       font-size: 0.85rem;
       color: #6b5851;
       line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    /* SELECTOR DE CANTIDAD EN LA TARJETA */
+    .card-quantity-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 1rem;
+      background-color: #f7f5f0;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(181, 148, 96, 0.2);
+    }
+
+    .card-quantity-selector label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #5c4a43;
+    }
+
+    .card-qty-input {
+      width: 50px;
+      padding: 0.2rem;
+      text-align: center;
+      border: 1px solid #b59460;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a2e2b;
+      background-color: #ffffff;
     }
 
     /* VALORACIÓN POR PRODUCTO */
@@ -189,12 +220,6 @@
       margin-bottom: 1rem;
       font-size: 0.8rem;
       color: #6b5851;
-    }
-
-    .stars-interactive {
-      color: #b59460;
-      font-size: 1rem;
-      letter-spacing: 2px;
     }
 
     .star-btn {
@@ -222,7 +247,7 @@
 
     .product-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #3a2e2b;
     }
@@ -231,9 +256,9 @@
       background-color: #3a2e2b;
       color: #f7f5f0;
       border: none;
-      padding: 0.6rem 1.1rem;
+      padding: 0.6rem 1rem;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.1s ease;
@@ -418,35 +443,13 @@
       gap: 0.6rem;
     }
 
-    .btn-checkout-wa {
-      background-color: #25D366;
-      color: #ffffff;
-      border: none;
-      padding: 0.8rem;
-      border-radius: 25px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-checkout-wa:hover {
-      background-color: #1eb956;
-    }
-
     .btn-checkout-ig {
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       color: #ffffff;
       border: none;
-      padding: 0.8rem;
+      padding: 0.9rem;
       border-radius: 25px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       text-align: center;
@@ -480,7 +483,7 @@
       <h1 class="catalog-title">Catálogo Oficial de Productos</h1>
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional</p>
       
-      <!-- VALORACIÓN GLOBAL PÚBLICA -->
+      <!-- VALORACIÓN GLOBAL -->
       <div class="global-rating">
         ⭐ Promedio general de la tienda: <span id="globalRatingScore">4.9</span> / 5.0 (<span id="totalReviewsCount">18</span> valoraciones públicas)
       </div>
@@ -499,6 +502,12 @@
             <h2 class="product-name">Chaleco Texturado Caloe</h2>
             <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
             
+            <!-- Selector de Cantidad Unitario -->
+            <div class="card-quantity-selector">
+              <label for="qty_prod_1">Cantidad:</label>
+              <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_1">
@@ -513,7 +522,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$120.000</span>
-            <button class="btn-add" onclick="addToCart('Chaleco Texturado Caloe', 120000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Chaleco Texturado Caloe', 120000, 'qty_prod_1')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -528,6 +537,11 @@
             <h2 class="product-name">Colección Amalia</h2>
             <p class="product-desc">Estilo sofisticado y responsable certificado de origen nacional.</p>
             
+            <div class="card-quantity-selector">
+              <label for="qty_prod_2">Cantidad:</label>
+              <input type="number" id="qty_prod_2" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_2">
@@ -542,7 +556,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$95.000</span>
-            <button class="btn-add" onclick="addToCart('Colección Amalia', 95000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Colección Amalia', 95000, 'qty_prod_2')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -557,6 +571,11 @@
             <h2 class="product-name">Colección Amoramar</h2>
             <p class="product-desc">Diseños vanguardistas que combinan tendencia y economía circular.</p>
             
+            <div class="card-quantity-selector">
+              <label for="qty_prod_3">Cantidad:</label>
+              <input type="number" id="qty_prod_3" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_3">
@@ -571,7 +590,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$125.000</span>
-            <button class="btn-add" onclick="addToCart('Colección Amoramar', 125000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Colección Amoramar', 125000, 'qty_prod_3')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -586,6 +605,11 @@
             <h2 class="product-name">Botas Begoña</h2>
             <p class="product-desc">Durabilidad, comodidad y elegancia en cada pisada con sello nacional.</p>
             
+            <div class="card-quantity-selector">
+              <label for="qty_prod_4">Cantidad:</label>
+              <input type="number" id="qty_prod_4" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_4">
@@ -600,7 +624,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$165.000</span>
-            <button class="btn-add" onclick="addToCart('Botas Begoña', 165000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Botas Begoña', 165000, 'qty_prod_4')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -615,6 +639,11 @@
             <h2 class="product-name">Botas Degas</h2>
             <p class="product-desc">Modelos exclusivos diseñados para completar cualquier look con personalidad.</p>
             
+            <div class="card-quantity-selector">
+              <label for="qty_prod_5">Cantidad:</label>
+              <input type="number" id="qty_prod_5" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_5">
@@ -629,7 +658,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$80.000</span>
-            <button class="btn-add" onclick="addToCart('Botas Degas', 80000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Botas Degas', 80000, 'qty_prod_5')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -644,6 +673,11 @@
             <h2 class="product-name">Botas Rojas Eda Manzinni</h2>
             <p class="product-desc">Excelencia en manufactura y diseño superior para el mercado chileno.</p>
             
+            <div class="card-quantity-selector">
+              <label for="qty_prod_6">Cantidad:</label>
+              <input type="number" id="qty_prod_6" class="card-qty-input" value="1" min="1" max="99">
+            </div>
+
             <div class="product-rating-box">
               <span>Valoración:</span>
               <div class="stars-interactive" data-prod="prod_6">
@@ -658,7 +692,7 @@
           </div>
           <div class="card-footer">
             <span class="product-price">$130.000</span>
-            <button class="btn-add" onclick="addToCart('Botas Rojas Eda Manzinni', 130000)">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Botas Rojas Eda Manzinni', 130000, 'qty_prod_6')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -696,11 +730,8 @@
         </div>
         
         <div class="checkout-buttons">
-          <button class="btn-checkout-wa" onclick="sendWhatsAppOrder()">
-            🟢 Pedir por WhatsApp
-          </button>
           <button class="btn-checkout-ig" onclick="sendInstagramOrder()">
-            🟣 Pedir por Instagram (DM)
+            🟣 Finalizar Pedido por Instagram (DM)
           </button>
         </div>
       </div>
@@ -710,20 +741,25 @@
   <script>
     let cart = [];
 
-    // Cargar datos guardados al iniciar la página
     document.addEventListener("DOMContentLoaded", () => {
       loadFavoritesState();
       loadRatingsState();
     });
 
-    function addToCart(title, price) {
+    function addCustomToCart(title, price, inputId) {
+      const qtyInput = document.getElementById(inputId);
+      const quantity = parseInt(qtyInput.value) || 1;
+
       const existing = cart.find(item => item.title === title);
       if (existing) {
-        existing.qty += 1;
+        existing.qty += quantity;
       } else {
-        cart.push({ title, price, qty: 1 });
+        cart.push({ title, price, qty: quantity });
       }
       updateCartUI();
+
+      // Resetear input a 1
+      qtyInput.value = 1;
 
       const btn = document.getElementById('cartFloatBtn');
       btn.classList.add('bounce');
@@ -814,7 +850,6 @@
         return;
       }
 
-      // Guardar voto del usuario
       userRatings[prodId] = stars;
       localStorage.setItem('owls_user_ratings', JSON.stringify(userRatings));
 
@@ -825,7 +860,6 @@
       let newScore = ((currentScore + stars) / 2).toFixed(1);
       scoreNumElem.textContent = newScore;
 
-      // Guardar nuevo puntaje visual en localStorage
       let scoresStore = JSON.parse(localStorage.getItem('owls_scores')) || {};
       scoresStore[prodId] = newScore;
       localStorage.setItem('owls_scores', JSON.stringify(scoresStore));
@@ -860,7 +894,7 @@
           btn.classList.add('rated');
           btn.textContent = '★';
         }
-        btn.disabled = true; // Bloquea para evitar cambios infinitos
+        btn.disabled = true;
       });
     }
 
@@ -870,24 +904,6 @@
       scores.forEach(s => sum += parseFloat(s.textContent));
       let globalAvg = (sum / scores.length).toFixed(1);
       document.getElementById('globalRatingScore').textContent = globalAvg;
-    }
-
-    /* PEDIDO POR WHATSAPP */
-    function sendWhatsAppOrder() {
-      if (cart.length === 0) {
-        alert('Tu carrito está vacío.');
-        return;
-      }
-
-      let text = "Hola OWLS LOOK! 🦉 Quisiera realizar el siguiente pedido:\n\n";
-      cart.forEach(item => {
-        text += `• ${item.qty}x ${item.title} - $${(item.price * item.qty).toLocaleString('es-CL')}\n`;
-      });
-
-      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      text += `\n*Total estimado: $${total.toLocaleString('es-CL')}*`;
-
-      window.open(`https://wa.me/56912345678?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     /* PEDIDO POR INSTAGRAM CON COPIA AUTOMÁTICA DE CÁLCULOS */
@@ -905,12 +921,10 @@
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       text += `\nTotal estimado: $${total.toLocaleString('es-CL')}.\n¿Me indican cómo coordinamos el pago y el envío?`;
 
-      // Copiar al portapapeles y abrir Instagram
       navigator.clipboard.writeText(text).then(() => {
         alert("📋 ¡Resumen y cálculos del pedido copiados al portapapeles con éxito!\n\nA continuación se abrirá Instagram. Pega el mensaje en el chat directo (DM) para enviarlo a la tienda.");
         window.open('https://www.instagram.com/direct/t/', '_blank');
       }).catch(err => {
-        // Fallback si el portapapeles falla en algún navegador móvil antiguo
         prompt("Copia este texto para tu pedido de Instagram:", text);
         window.open('https://www.instagram.com/direct/t/', '_blank');
       });
@@ -919,6 +933,7 @@
 
 </body>
 </html>
+
 
 
 
