@@ -71,6 +71,25 @@
     .catalog-subtitle {
       font-size: 0.95rem;
       color: #6b5851;
+      margin-bottom: 1rem;
+    }
+
+    /* ESTRELLAS Y PROMEDIO GENERAL */
+    .global-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #f7f5f0;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #5c4a43;
+      border: 1px solid rgba(181, 148, 96, 0.3);
+    }
+
+    .global-rating span {
+      color: #b59460;
+      font-weight: 700;
     }
 
     /* GRID DE PRODUCTOS */
@@ -89,12 +108,42 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
+      position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .catalog-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* BOTÓN CORAZÓN (FAVORITO) */
+    .btn-fav {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      z-index: 10;
+    }
+
+    .btn-fav:hover {
+      transform: scale(1.1);
+      background-color: #ffffff;
+    }
+
+    .btn-fav.active {
+      color: #e63946;
     }
 
     .card-img {
@@ -126,14 +175,37 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       color: #3a2e2b;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
 
     .product-desc {
       font-size: 0.85rem;
       color: #6b5851;
       line-height: 1.5;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* VALORACIÓN POR PRODUCTO */
+    .product-rating-box {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: #6b5851;
+    }
+
+    .stars-interactive {
+      cursor: pointer;
+      color: #ccc;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      transition: color 0.2s;
+    }
+
+    .stars-interactive span:hover,
+    .stars-interactive span:hover ~ span {
+      color: #b59460;
     }
 
     .card-footer {
@@ -214,7 +286,7 @@
       100% { transform: scale(1); }
     }
 
-    /* MODAL DEL CARRITO DE COMPRAS */
+    /* MODAL DEL CARRITO */
     .cart-modal-overlay {
       position: fixed;
       top: 0;
@@ -325,7 +397,7 @@
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.8rem;
     }
 
     .cart-total {
@@ -337,13 +409,20 @@
       color: #3a2e2b;
     }
 
-    .btn-checkout {
+    /* BOTONES DE PEDIDO (WHATSAPP E INSTAGRAM) */
+    .checkout-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .btn-checkout-wa {
       background-color: #25D366;
       color: #ffffff;
       border: none;
-      padding: 0.9rem;
-      border-radius: 30px;
-      font-size: 0.95rem;
+      padding: 0.8rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       text-align: center;
@@ -355,8 +434,30 @@
       transition: background-color 0.3s ease;
     }
 
-    .btn-checkout:hover {
+    .btn-checkout-wa:hover {
       background-color: #1eb956;
+    }
+
+    .btn-checkout-ig {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-checkout-ig:hover {
+      opacity: 0.9;
     }
 
     .footer-copy {
@@ -376,19 +477,33 @@
       <a href="index.html" class="back-link">← Volver al Inicio</a>
       <h1 class="catalog-title">Catálogo Oficial de Productos</h1>
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional</p>
+      
+      <!-- VALORACIÓN GLOBAL PÚBLICA -->
+      <div class="global-rating">
+        ⭐ Promedio de la tienda: <span id="globalRatingScore">4.9</span> / 5.0 (<span id="totalReviewsCount">18</span> valoraciones)
+      </div>
     </header>
 
     <!-- GRID DE PRODUCTOS -->
-    <main class="catalog-grid">
+    <main class="catalog-grid" id="productGrid">
 
-      <!-- ROPA -->
-      <article class="catalog-card">
+      <!-- PRODUCTO 1 -->
+      <article class="catalog-card" data-id="1">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Caloe</span>
             <h2 class="product-name">Chaleco Texturado Caloe</h2>
             <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">4.8</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$120.000</span>
@@ -397,13 +512,23 @@
         </div>
       </article>
 
-      <article class="catalog-card">
+      <!-- PRODUCTO 2 -->
+      <article class="catalog-card" data-id="2">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0014.jpg" alt="Colección Amalia" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Amalia</span>
             <h2 class="product-name">Colección Amalia</h2>
             <p class="product-desc">Estilo sofisticado y responsable certificado de origen nacional.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$95.000</span>
@@ -412,13 +537,23 @@
         </div>
       </article>
 
-      <article class="catalog-card">
+      <!-- PRODUCTO 3 -->
+      <article class="catalog-card" data-id="3">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0013.jpg" alt="Colección Amoramar" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Amoramar</span>
             <h2 class="product-name">Colección Amoramar</h2>
             <p class="product-desc">Diseños vanguardistas que combinan tendencia y economía circular.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$125.000</span>
@@ -427,14 +562,23 @@
         </div>
       </article>
 
-      <!-- CALZADO -->
-      <article class="catalog-card">
+      <!-- PRODUCTO 4 -->
+      <article class="catalog-card" data-id="4">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0009.jpg" alt="Botas Begoña" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Calzado Certificado • Begoña</span>
             <h2 class="product-name">Botas Begoña</h2>
             <p class="product-desc">Durabilidad, comodidad y elegancia en cada pisada con sello nacional.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$165.000</span>
@@ -443,13 +587,23 @@
         </div>
       </article>
 
-      <article class="catalog-card">
+      <!-- PRODUCTO 5 -->
+      <article class="catalog-card" data-id="5">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0007.jpg" alt="Botas Degas" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Calzado Certificado • Degas</span>
             <h2 class="product-name">Botas Degas</h2>
             <p class="product-desc">Modelos exclusivos diseñados para completar cualquier look con personalidad.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">4.7</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$80.000</span>
@@ -458,13 +612,23 @@
         </div>
       </article>
 
-      <article class="catalog-card">
+      <!-- PRODUCTO 6 -->
+      <article class="catalog-card" data-id="6">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261020-WA0006.jpg" alt="Botas Rojas Eda Manzinni" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Calzado Certificado • Eda Manzinni</span>
             <h2 class="product-name">Botas Rojas Eda Manzinni</h2>
             <p class="product-desc">Excelencia en manufactura y diseño superior para el mercado chileno.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$130.000</span>
@@ -473,139 +637,27 @@
         </div>
       </article>
 
-      <article class="catalog-card">
-        <img src="Screenshot_20261027-120911.png" alt="Botas Blancas Eda Manzinni" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Calzado Certificado • Eda Manzinni</span>
-            <h2 class="product-name">Botas Blancas Eda Manzinni</h2>
-            <p class="product-desc">Edición especial con taco elegante y acabados en cuero sintético sustentable.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$130.000</span>
-            <button class="btn-add" onclick="addToCart('Botas Blancas Eda Manzinni', 130000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- JOYAS -->
-      <article class="catalog-card">
+      <!-- PRODUCTO 7 -->
+      <article class="catalog-card" data-id="7">
+        <button class="btn-fav" onclick="toggleFavorite(this)">🤍</button>
         <img src="IMG-20261026-WA0008.jpg" alt="Collares Multi-Capa Knot & Lume" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Joyas • Knot & Lume</span>
             <h2 class="product-name">Collares Multi-Capa Estrellas</h2>
             <p class="product-desc">Detalles sutiles y sofisticados para realzar tu expresión personal.</p>
+            
+            <div class="product-rating-box">
+              <span>Calificar:</span>
+              <div class="stars-interactive" onclick="rateProduct(event, this)">
+                <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+              </div>
+              <span class="product-score-text">(<strong class="score-num">4.8</strong>)</span>
+            </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$20.000</span>
             <button class="btn-add" onclick="addToCart('Collares Multi-Capa Knot & Lume', 20000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261026-WA0009.jpg" alt="Collar de Cristales Perfect Match" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Perfect Match</span>
-            <h2 class="product-name">Collar de Cristales Pasteles</h2>
-            <p class="product-desc">Accesorios únicos certificados con terminaciones impecables.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$18.000</span>
-            <button class="btn-add" onclick="addToCart('Collar Cristales Perfect Match', 18000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261020-WA0003.jpg" alt="Set de Pulseras Zhennice" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Zhennice</span>
-            <h2 class="product-name">Set de Pulseras Negras y Doradas</h2>
-            <p class="product-desc">Elegancia y diseño exclusivo para destacar en cualquier ocasión.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$15.000</span>
-            <button class="btn-add" onclick="addToCart('Set Pulseras Zhennice', 15000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261026-WA0006.jpg" alt="Tobilleras Marinas Zhennice" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Zhennice</span>
-            <h2 class="product-name">Tobilleras Marinas con Dije</h2>
-            <p class="product-desc">Set de 3 tobilleras tejidas a mano con detalles veraniegos.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$15.000</span>
-            <button class="btn-add" onclick="addToCart('Tobilleras Marinas Zhennice', 15000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261020-WA0004.jpg" alt="Set Pulseras Turquesa Knot & Lume" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Knot & Lume</span>
-            <h2 class="product-name">Set Pulseras Turquesa & Geométrico</h2>
-            <p class="product-desc">Combinación de piedras turquesa y dijes en tono dorado mate.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$20.000</span>
-            <button class="btn-add" onclick="addToCart('Set Turquesa Knot & Lume', 20000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261020-WA0011.jpg" alt="Collar Cuero & Medalla Etnica" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Perfect Match</span>
-            <h2 class="product-name">Collar Cuero & Medalla Étnica</h2>
-            <p class="product-desc">Diseño bohemio con cordón de cuero y dije circular labrado.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$18.000</span>
-            <button class="btn-add" onclick="addToCart('Collar Cuero Perfect Match', 18000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="catalog-card">
-        <img src="IMG-20261020-WA0010.jpg" alt="Collar Dije Cristal Azul" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Joyas • Knot & Lume</span>
-            <h2 class="product-name">Collar Plata & Gota Azul Saphire</h2>
-            <p class="product-desc">Cadena delicada de plata con dije de cristal facetado azul intenso.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$20.000</span>
-            <button class="btn-add" onclick="addToCart('Collar Gota Azul Knot & Lume', 20000)">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- EMPAQUE -->
-      <article class="catalog-card">
-        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#b59460;font-family:'Cormorant Garamond',serif;font-size:1.5rem;">✦ ECO PACK ✦</div>
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Sustentabilidad • OWLS LOOK</span>
-            <h2 class="product-name">Empaque Biodegradable</h2>
-            <p class="product-desc">Caja rígida ecológica fabricada con retazos de ropa de algodón y maicena.</p>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$3.500</span>
-            <button class="btn-add" onclick="addToCart('Empaque Biodegradable', 3500)">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -641,9 +693,15 @@
           <span>Total:</span>
           <span id="cartTotalText">$0</span>
         </div>
-        <button class="btn-checkout" onclick="sendWhatsAppOrder()">
-          🟢 Finalizar Pedido por WhatsApp
-        </button>
+        
+        <div class="checkout-buttons">
+          <button class="btn-checkout-wa" onclick="sendWhatsAppOrder()">
+            🟢 Pedir por WhatsApp
+          </button>
+          <button class="btn-checkout-ig" onclick="sendInstagramOrder()">
+            🟣 Pedir por Instagram (DM)
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -660,7 +718,6 @@
       }
       updateCartUI();
 
-      // Animación de rebote
       const btn = document.getElementById('cartFloatBtn');
       btn.classList.add('bounce');
       setTimeout(() => btn.classList.remove('bounce'), 400);
@@ -716,9 +773,52 @@
       }
     }
 
+    /* BOTÓN CORAZÓN (GUARDAR FAVORITO) */
+    function toggleFavorite(btn) {
+      if (btn.textContent === '🤍') {
+        btn.textContent = '❤️';
+        btn.classList.add('active');
+      } else {
+        btn.textContent = '🤍';
+        btn.classList.remove('active');
+      }
+    }
+
+    /* SISTEMA DE VALORACIÓN Y PROMEDIO PÚBLICO */
+    function rateProduct(event, container) {
+      const clickedStar = event.target;
+      if (!clickedStar.dataset.value) return;
+      
+      const ratingVal = parseInt(clickedStar.dataset.value);
+      const card = container.closest('.catalog-card');
+      const scoreNumElem = card.querySelector('.score-num');
+      
+      // Actualiza nota interna del producto de forma simulada realista
+      let currentScore = parseFloat(scoreNumElem.textContent);
+      let newScore = ((currentScore + ratingVal) / 2).toFixed(1);
+      scoreNumElem.textContent = newScore;
+      
+      alert(`¡Gracias por tu valoración de ${ratingVal} estrellas! Tu opinión ayuda a mantener el promedio público de la tienda.`);
+      
+      // Actualiza también de forma global el promedio de la tienda
+      updateGlobalRating();
+    }
+
+    function updateGlobalRating() {
+      const scores = document.querySelectorAll('.score-num');
+      let sum = 0;
+      scores.forEach(s => sum += parseFloat(s.textContent));
+      let globalAvg = (sum / scores.length).toFixed(1);
+      
+      document.getElementById('globalRatingScore').textContent = globalAvg;
+      let totalRev = document.getElementById('totalReviewsCount');
+      totalRev.textContent = parseInt(totalRev.textContent) + 1;
+    }
+
+    /* PEDIDO POR WHATSAPP */
     function sendWhatsAppOrder() {
       if (cart.length === 0) {
-        alert('Tu carrito está vacío. Agrega algunos productos antes de pedir.');
+        alert('Tu carrito está vacío.');
         return;
       }
 
@@ -730,11 +830,35 @@
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       text += `\n*Total estimado: $${total.toLocaleString('es-CL')}*`;
 
-      const encodedText = encodeURIComponent(text);
-      window.open(`https://wa.me/56912345678?text=${encodedText}`, '_blank');
+      window.open(`https://wa.me/56912345678?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    /* PEDIDO / MENSAJE A INSTAGRAM */
+    function sendInstagramOrder() {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
+      let text = "Hola @somos.owlslook 🦉✨ Me interesan estos productos de su catálogo:\n\n";
+      cart.forEach(item => {
+        text += `• ${item.qty}x ${item.title} ($${(item.price * item.qty).toLocaleString('es-CL')})\n`;
+      });
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      text += `\nTotal: $${total.toLocaleString('es-CL')}. ¿Disponibilidad y coordinación de entrega?`;
+
+      // Redirige al perfil o chat de Instagram
+      window.open(`https://www.instagram.com/direct/t/`, '_blank');
+      
+      // Copia el texto automático al portapapeles para que la usuaria solo tenga que pegarlo en el DM
+      navigator.clipboard.writeText(text).then(() => {
+        alert("¡Detalle del carrito copiado al portapapeles! Pégalo en el Mensaje Directo (DM) de Instagram para enviar tu pedido.");
+      });
     }
   </script>
 
 </body>
 </html>
+
 
