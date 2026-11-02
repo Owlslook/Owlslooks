@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Oficial & Carrito - OWLS LOOK</title>
+  <title>Catálogo Oficial & Stock - OWLS LOOK</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -71,25 +71,6 @@
     .catalog-subtitle {
       font-size: 0.95rem;
       color: #6b5851;
-      margin-bottom: 1rem;
-    }
-
-    /* VALORACIÓN GLOBAL */
-    .global-rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: #f7f5f0;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: #5c4a43;
-      border: 1px solid rgba(181, 148, 96, 0.3);
-    }
-
-    .global-rating span {
-      color: #b59460;
-      font-weight: 700;
     }
 
     /* GRID DE PRODUCTOS */
@@ -181,6 +162,19 @@
       margin-bottom: 0.8rem;
     }
 
+    /* INDICADOR DE STOCK DISPONIBLE */
+    .product-stock-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #2e7d32;
+      background-color: #e8f5e9;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(46, 125, 50, 0.2);
+    }
+
     /* SELECTOR DE CANTIDAD EN LA TARJETA */
     .card-quantity-selector {
       display: flex;
@@ -210,30 +204,6 @@
       font-weight: 600;
       color: #3a2e2b;
       background-color: #ffffff;
-    }
-
-    /* VALORACIÓN POR PRODUCTO */
-    .product-rating-box {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-      font-size: 0.8rem;
-      color: #6b5851;
-    }
-
-    .star-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      color: #ccc;
-      transition: color 0.2s;
-      padding: 0;
-    }
-
-    .star-btn.rated, .star-btn:hover {
-      color: #b59460;
     }
 
     .card-footer {
@@ -482,11 +452,6 @@
       <a href="index.html" class="back-link">← Volver al Inicio</a>
       <h1 class="catalog-title">Catálogo Oficial de Productos</h1>
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional</p>
-      
-      <!-- VALORACIÓN GLOBAL -->
-      <div class="global-rating">
-        ⭐ Promedio general de la tienda: <span id="globalRatingScore">4.9</span> / 5.0 (<span id="totalReviewsCount">18</span> valoraciones públicas)
-      </div>
     </header>
 
     <!-- GRID DE PRODUCTOS -->
@@ -502,22 +467,13 @@
             <h2 class="product-name">Chaleco Texturado Caloe</h2>
             <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
             
-            <!-- Selector de Cantidad Unitario -->
-            <div class="card-quantity-selector">
-              <label for="qty_prod_1">Cantidad:</label>
-              <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <!-- Stock Disponible -->
+            <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_1">
-                <button class="star-btn" onclick="rateProduct('prod_1', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_1', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_1', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_1', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_1', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">4.8</strong>)</span>
+            <!-- Selector de Cantidad -->
+            <div class="card-quantity-selector">
+              <label for="qty_prod_1">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1" max="5">
             </div>
           </div>
           <div class="card-footer">
@@ -537,21 +493,11 @@
             <h2 class="product-name">Colección Amalia</h2>
             <p class="product-desc">Estilo sofisticado y responsable certificado de origen nacional.</p>
             
-            <div class="card-quantity-selector">
-              <label for="qty_prod_2">Cantidad:</label>
-              <input type="number" id="qty_prod_2" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_2">
-                <button class="star-btn" onclick="rateProduct('prod_2', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_2', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_2', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_2', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_2', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_2">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_2" class="card-qty-input" value="1" min="1" max="3">
             </div>
           </div>
           <div class="card-footer">
@@ -571,21 +517,11 @@
             <h2 class="product-name">Colección Amoramar</h2>
             <p class="product-desc">Diseños vanguardistas que combinan tendencia y economía circular.</p>
             
-            <div class="card-quantity-selector">
-              <label for="qty_prod_3">Cantidad:</label>
-              <input type="number" id="qty_prod_3" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_3">
-                <button class="star-btn" onclick="rateProduct('prod_3', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_3', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_3', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_3', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_3', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_3">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_3" class="card-qty-input" value="1" min="1" max="4">
             </div>
           </div>
           <div class="card-footer">
@@ -605,21 +541,11 @@
             <h2 class="product-name">Botas Begoña</h2>
             <p class="product-desc">Durabilidad, comodidad y elegancia en cada pisada con sello nacional.</p>
             
-            <div class="card-quantity-selector">
-              <label for="qty_prod_4">Cantidad:</label>
-              <input type="number" id="qty_prod_4" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <div class="product-stock-badge">📦 Stock disponible: 2 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_4">
-                <button class="star-btn" onclick="rateProduct('prod_4', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_4', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_4', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_4', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_4', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">4.9</strong>)</span>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_4">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_4" class="card-qty-input" value="1" min="1" max="2">
             </div>
           </div>
           <div class="card-footer">
@@ -639,21 +565,11 @@
             <h2 class="product-name">Botas Degas</h2>
             <p class="product-desc">Modelos exclusivos diseñados para completar cualquier look con personalidad.</p>
             
-            <div class="card-quantity-selector">
-              <label for="qty_prod_5">Cantidad:</label>
-              <input type="number" id="qty_prod_5" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <div class="product-stock-badge">📦 Stock disponible: 6 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_5">
-                <button class="star-btn" onclick="rateProduct('prod_5', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_5', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_5', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_5', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_5', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">4.7</strong>)</span>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_5">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_5" class="card-qty-input" value="1" min="1" max="6">
             </div>
           </div>
           <div class="card-footer">
@@ -673,21 +589,11 @@
             <h2 class="product-name">Botas Rojas Eda Manzinni</h2>
             <p class="product-desc">Excelencia en manufactura y diseño superior para el mercado chileno.</p>
             
-            <div class="card-quantity-selector">
-              <label for="qty_prod_6">Cantidad:</label>
-              <input type="number" id="qty_prod_6" class="card-qty-input" value="1" min="1" max="99">
-            </div>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
 
-            <div class="product-rating-box">
-              <span>Valoración:</span>
-              <div class="stars-interactive" data-prod="prod_6">
-                <button class="star-btn" onclick="rateProduct('prod_6', 1)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_6', 2)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_6', 3)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_6', 4)">★</button>
-                <button class="star-btn" onclick="rateProduct('prod_6', 5)">★</button>
-              </div>
-              <span class="product-score-text">(<strong class="score-num">5.0</strong>)</span>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_6">Cantidad a pedir:</label>
+              <input type="number" id="qty_prod_6" class="card-qty-input" value="1" min="1" max="3">
             </div>
           </div>
           <div class="card-footer">
@@ -743,7 +649,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       loadFavoritesState();
-      loadRatingsState();
     });
 
     function addCustomToCart(title, price, inputId) {
@@ -758,7 +663,6 @@
       }
       updateCartUI();
 
-      // Resetear input a 1
       qtyInput.value = 1;
 
       const btn = document.getElementById('cartFloatBtn');
@@ -841,71 +745,6 @@
       });
     }
 
-    /* GESTIÓN DE VALORACIONES TRANSPARENTES (UNA VEZ POR DISPOSITIVO) */
-    function rateProduct(prodId, stars) {
-      let userRatings = JSON.parse(localStorage.getItem('owls_user_ratings')) || {};
-      
-      if (userRatings[prodId]) {
-        alert('⚠️ Ya has valorado este producto anteriormente. Para mantener la transparencia pública, solo se permite una valoración por dispositivo.');
-        return;
-      }
-
-      userRatings[prodId] = stars;
-      localStorage.setItem('owls_user_ratings', JSON.stringify(userRatings));
-
-      const card = document.querySelector(`[data-id="${prodId}"]`);
-      const scoreNumElem = card.querySelector('.score-num');
-      
-      let currentScore = parseFloat(scoreNumElem.textContent);
-      let newScore = ((currentScore + stars) / 2).toFixed(1);
-      scoreNumElem.textContent = newScore;
-
-      let scoresStore = JSON.parse(localStorage.getItem('owls_scores')) || {};
-      scoresStore[prodId] = newScore;
-      localStorage.setItem('owls_scores', JSON.stringify(scoresStore));
-
-      lockProductRating(card, stars);
-      updateGlobalRating();
-      alert(`✨ ¡Gracias! Tu valoración de ${stars} estrellas ha sido registrada y publicada exitosamente.`);
-    }
-
-    function loadRatingsState() {
-      let userRatings = JSON.parse(localStorage.getItem('owls_user_ratings')) || {};
-      let scoresStore = JSON.parse(localStorage.getItem('owls_scores')) || {};
-
-      document.querySelectorAll('.catalog-card').forEach(card => {
-        let prodId = card.dataset.id;
-        
-        if (scoresStore[prodId]) {
-          card.querySelector('.score-num').textContent = scoresStore[prodId];
-        }
-
-        if (userRatings[prodId]) {
-          lockProductRating(card, userRatings[prodId]);
-        }
-      });
-      updateGlobalRating();
-    }
-
-    function lockProductRating(card, ratedStars) {
-      const starBtns = card.querySelectorAll('.star-btn');
-      starBtns.forEach((btn, idx) => {
-        if (idx < ratedStars) {
-          btn.classList.add('rated');
-          btn.textContent = '★';
-        }
-        btn.disabled = true;
-      });
-    }
-
-    function updateGlobalRating() {
-      const scores = document.querySelectorAll('.score-num');
-      let sum = 0;
-      scores.forEach(s => sum += parseFloat(s.textContent));
-      let globalAvg = (sum / scores.length).toFixed(1);
-      document.getElementById('globalRatingScore').textContent = globalAvg;
-    }
-
     /* PEDIDO POR INSTAGRAM CON COPIA AUTOMÁTICA DE CÁLCULOS */
     function sendInstagramOrder() {
       if (cart.length === 0) {
@@ -922,18 +761,13 @@
       text += `\nTotal estimado: $${total.toLocaleString('es-CL')}.\n¿Me indican cómo coordinamos el pago y el envío?`;
 
       navigator.clipboard.writeText(text).then(() => {
-        alert("📋 ¡Resumen y cálculos del pedido copiados al portapapeles con éxito!\n\nA continuación se abrirá Instagram. Pega el mensaje en el chat directo (DM) para enviarlo a la tienda.");
-        window.open('https://www.instagram.com/direct/t/', '_blank');
+        alert("📋 ¡Resumen y cálculos del pedido copiados al portapapeles con éxito!\n\nUna vez que abras Instagram, podrás pegar el mensaje en el chat directo (DM) de la tienda.");
       }).catch(err => {
         prompt("Copia este texto para tu pedido de Instagram:", text);
-        window.open('https://www.instagram.com/direct/t/', '_blank');
       });
     }
   </script>
 
 </body>
 </html>
-
-
-
-
+ 
