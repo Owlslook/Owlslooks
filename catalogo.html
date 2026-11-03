@@ -98,7 +98,6 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     }
 
-    /* BOTÓN CORAZÓN (FAVORITO) */
     .btn-fav {
       position: absolute;
       top: 12px;
@@ -162,7 +161,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* INDICADOR DE STOCK DISPONIBLE */
     .product-stock-badge {
       font-size: 0.8rem;
       font-weight: 600;
@@ -175,7 +173,6 @@
       border: 1px solid rgba(46, 125, 50, 0.2);
     }
 
-    /* SELECTOR DE CANTIDAD EN LA TARJETA */
     .card-quantity-selector {
       display: flex;
       align-items: center;
@@ -242,7 +239,7 @@
       transform: scale(0.95);
     }
 
-    /* BOTÓN FLOTANTE CARRITO */
+    /* CARRITO FLOTANTE Y MODAL */
     .cart-float-btn {
       position: fixed;
       bottom: 25px;
@@ -284,7 +281,6 @@
       100% { transform: scale(1); }
     }
 
-    /* MODAL CARRITO */
     .cart-modal-overlay {
       position: fixed;
       top: 0;
@@ -407,12 +403,6 @@
       color: #3a2e2b;
     }
 
-    .checkout-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
     .btn-checkout-ig {
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       color: #ffffff;
@@ -454,149 +444,621 @@
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional</p>
     </header>
 
-    <!-- GRID DE PRODUCTOS -->
+    <!-- GRID DE PRODUCTOS COMPLETO (prod_1 A prod_28) -->
     <main class="catalog-grid" id="productGrid">
 
-      <!-- PRODUCTO 1 -->
+      <!-- PROD 1 -->
       <article class="catalog-card" data-id="prod_1">
         <button class="btn-fav" onclick="toggleFavorite('prod_1', this)">🤍</button>
-        <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe" class="card-img">
+        <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe Marrón" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Caloe</span>
             <h2 class="product-name">Chaleco Texturado Caloe</h2>
-            <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
-            
+            <p class="product-desc">Tono marrón animal print con diseño de botones metálicos.</p>
             <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
-
             <div class="card-quantity-selector">
-              <label for="qty_prod_1">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1" max="5">
+              <label for="qty_prod_1">Cantidad:</label>
+              <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1">
             </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$120.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Chaleco Texturado Caloe', 120000, 'qty_prod_1')">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Chaleco Texturado Caloe (Marrón)', 120000, 'qty_prod_1')">+ Carrito</button>
           </div>
         </div>
       </article>
 
-      <!-- PRODUCTO 2 -->
+      <!-- PROD 2 -->
       <article class="catalog-card" data-id="prod_2">
         <button class="btn-fav" onclick="toggleFavorite('prod_2', this)">🤍</button>
-        <img src="IMG-20261020-WA0014.jpg" alt="Colección Amalia" class="card-img">
+        <img src="IMG-20261020-WA0014.jpg" alt="Colección Amalia Roja" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Amalia</span>
             <h2 class="product-name">Colección Amalia</h2>
-            <p class="product-desc">Estilo sofisticado y responsable certificado de origen nacional.</p>
-            
+            <p class="product-desc">Chaleco rojo brillante de corte sofisticado y sello nacional.</p>
             <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
-
             <div class="card-quantity-selector">
-              <label for="qty_prod_2">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_2" class="card-qty-input" value="1" min="1" max="3">
+              <label for="qty_prod_2">Cantidad:</label>
+              <input type="number" id="qty_prod_2" class="card-qty-input" value="1" min="1">
             </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$95.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Colección Amalia', 95000, 'qty_prod_2')">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Colección Amalia (Rojo)', 95000, 'qty_prod_2')">+ Carrito</button>
           </div>
         </div>
       </article>
 
-      <!-- PRODUCTO 3 -->
+      <!-- PROD 3 -->
       <article class="catalog-card" data-id="prod_3">
         <button class="btn-fav" onclick="toggleFavorite('prod_3', this)">🤍</button>
-        <img src="IMG-20261020-WA0013.jpg" alt="Colección Amoramar" class="card-img">
+        <img src="IMG-20261020-WA0013.jpg" alt="Colección Amoramar Camel" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Amoramar</span>
             <h2 class="product-name">Colección Amoramar</h2>
-            <p class="product-desc">Diseños vanguardistas que combinan tendencia y economía circular.</p>
-            
+            <p class="product-desc">Chaleco de textura tostada / camel en tendencia atemporal.</p>
             <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
-
             <div class="card-quantity-selector">
-              <label for="qty_prod_3">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_3" class="card-qty-input" value="1" min="1" max="4">
+              <label for="qty_prod_3">Cantidad:</label>
+              <input type="number" id="qty_prod_3" class="card-qty-input" value="1" min="1">
             </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$125.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Colección Amoramar', 125000, 'qty_prod_3')">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Colección Amoramar (Tostado)', 125000, 'qty_prod_3')">+ Carrito</button>
           </div>
         </div>
       </article>
 
-      <!-- PRODUCTO 4 -->
+      <!-- PROD 4 -->
       <article class="catalog-card" data-id="prod_4">
         <button class="btn-fav" onclick="toggleFavorite('prod_4', this)">🤍</button>
+        <img src="IMG-20261027-WA0008.jpg" alt="Chaleco Caloe Verde" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Ropa Femenina • Caloe</span>
+            <h2 class="product-name">Chaleco Caloe Verde</h2>
+            <p class="product-desc">Confección en gamuza sintética verde esmeralda con botones.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_4">Cantidad:</label>
+              <input type="number" id="qty_prod_4" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$120.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Chaleco Caloe (Verde)', 120000, 'qty_prod_4')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 5 -->
+      <article class="catalog-card" data-id="prod_5">
+        <button class="btn-fav" onclick="toggleFavorite('prod_5', this)">🤍</button>
         <img src="IMG-20261020-WA0009.jpg" alt="Botas Begoña" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Calzado Certificado • Begoña</span>
             <h2 class="product-name">Botas Begoña</h2>
-            <p class="product-desc">Durabilidad, comodidad y elegancia en cada pisada con sello nacional.</p>
-            
+            <p class="product-desc">Botas en cuero café oscuro de alta resistencia. Talla 37.</p>
             <div class="product-stock-badge">📦 Stock disponible: 2 unidades</div>
-
             <div class="card-quantity-selector">
-              <label for="qty_prod_4">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_4" class="card-qty-input" value="1" min="1" max="2">
+              <label for="qty_prod_5">Cantidad:</label>
+              <input type="number" id="qty_prod_5" class="card-qty-input" value="1" min="1">
             </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$165.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Botas Begoña', 165000, 'qty_prod_4')">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Botas Begoña (Café Oscuro)', 165000, 'qty_prod_5')">+ Carrito</button>
           </div>
         </div>
       </article>
 
-      <!-- PRODUCTO 5 -->
-      <article class="catalog-card" data-id="prod_5">
-        <button class="btn-fav" onclick="toggleFavorite('prod_5', this)">🤍</button>
-        <img src="IMG-20261020-WA0007.jpg" alt="Botas Degas" class="card-img">
-        <div class="card-body">
-          <div>
-            <span class="product-tag">Calzado Certificado • Degas</span>
-            <h2 class="product-name">Botas Degas</h2>
-            <p class="product-desc">Modelos exclusivos diseñados para completar cualquier look con personalidad.</p>
-            
-            <div class="product-stock-badge">📦 Stock disponible: 6 unidades</div>
-
-            <div class="card-quantity-selector">
-              <label for="qty_prod_5">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_5" class="card-qty-input" value="1" min="1" max="6">
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="product-price">$80.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Botas Degas', 80000, 'qty_prod_5')">+ Carrito</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- PRODUCTO 6 -->
+      <!-- PROD 6 -->
       <article class="catalog-card" data-id="prod_6">
         <button class="btn-fav" onclick="toggleFavorite('prod_6', this)">🤍</button>
-        <img src="IMG-20261020-WA0006.jpg" alt="Botas Rojas Eda Manzinni" class="card-img">
+        <img src="IMG-20261020-WA0008_2.jpg" alt="Botas Eda Manzinni Camel" class="card-img">
         <div class="card-body">
           <div>
             <span class="product-tag">Calzado Certificado • Eda Manzinni</span>
-            <h2 class="product-name">Botas Rojas Eda Manzinni</h2>
-            <p class="product-desc">Excelencia en manufactura y diseño superior para el mercado chileno.</p>
-            
+            <h2 class="product-name">Botas Eda Manzinni Camel</h2>
+            <p class="product-desc">Gamuza arrugada con hebilla lateral en tono tostado. Talla 36.</p>
             <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
-
             <div class="card-quantity-selector">
-              <label for="qty_prod_6">Cantidad a pedir:</label>
-              <input type="number" id="qty_prod_6" class="card-qty-input" value="1" min="1" max="3">
+              <label for="qty_prod_6">Cantidad:</label>
+              <input type="number" id="qty_prod_6" class="card-qty-input" value="1" min="1">
             </div>
           </div>
           <div class="card-footer">
             <span class="product-price">$130.000</span>
-            <button class="btn-add" onclick="addCustomToCart('Botas Rojas Eda Manzinni', 130000, 'qty_prod_6')">+ Carrito</button>
+            <button class="btn-add" onclick="addCustomToCart('Botas Eda Manzinni (Camel)', 130000, 'qty_prod_6')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 7 -->
+      <article class="catalog-card" data-id="prod_7">
+        <button class="btn-fav" onclick="toggleFavorite('prod_7', this)">🤍</button>
+        <img src="IMG-20261020-WA0007.jpg" alt="Botas Degas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Calzado Certificado • Degas</span>
+            <h2 class="product-name">Botas Degas Caña Alta</h2>
+            <p class="product-desc">Diseño exclusivo gris/oliva con taco de madera. Talla 38.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_7">Cantidad:</label>
+              <input type="number" id="qty_prod_7" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$80.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Botas Degas (Gris/Oliva)', 80000, 'qty_prod_7')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 8 -->
+      <article class="catalog-card" data-id="prod_8">
+        <button class="btn-fav" onclick="toggleFavorite('prod_8', this)">🤍</button>
+        <img src="IMG-20261020-WA0006_2.jpg" alt="Botas Eda Manzinni Rojas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Calzado Certificado • Eda Manzinni</span>
+            <h2 class="product-name">Botas Rojas Eda Manzinni</h2>
+            <p class="product-desc">Taco alto estilizado con textura en contraste. Tallas 38 y 36.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 2 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_8">Cantidad:</label>
+              <input type="number" id="qty_prod_8" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$130.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Botas Rojas Eda Manzinni', 130000, 'qty_prod_8')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 9 -->
+      <article class="catalog-card" data-id="prod_9">
+        <button class="btn-fav" onclick="toggleFavorite('prod_9', this)">🤍</button>
+        <img src="IMG-20261020-WA0005.jpg" alt="Botas Eda Manzinni Blancas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Calzado Certificado • Eda Manzinni</span>
+            <h2 class="product-name">Botas Blancas Eda Manzinni</h2>
+            <p class="product-desc">Acabado liso en crema/blanco con cierre lateral. Talla 36.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 2 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_9">Cantidad:</label>
+              <input type="number" id="qty_prod_9" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$130.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Botas Blancas Eda Manzinni', 130000, 'qty_prod_9')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 10 -->
+      <article class="catalog-card" data-id="prod_10">
+        <button class="btn-fav" onclick="toggleFavorite('prod_10', this)">🤍</button>
+        <img src="Screenshot_20261027-120740_2.png" alt="Collares Turquesas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collares Multi-Capa Turquesas</h2>
+            <p class="product-desc">Diseño dorado con cuentas turquesas y medalla lisa inferior.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_10">Cantidad:</label>
+              <input type="number" id="qty_prod_10" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collares Multi-Capa Turquesas', 20000, 'qty_prod_10')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 11 -->
+      <article class="catalog-card" data-id="prod_11">
+        <button class="btn-fav" onclick="toggleFavorite('prod_11', this)">🤍</button>
+        <img src="Screenshot_20261027-120740_2.png" alt="Cinto Negro" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Accesorios • OWLS LOOK</span>
+            <h2 class="product-name">Cinto Ancho Multitiras Negro</h2>
+            <p class="product-desc">Cinto bohemio con hebilla metálica circular e hilos colgantes.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_11">Cantidad:</label>
+              <input type="number" id="qty_prod_11" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$25.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Cinto Multitiras Negro', 25000, 'qty_prod_11')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 12 -->
+      <article class="catalog-card" data-id="prod_12">
+        <button class="btn-fav" onclick="toggleFavorite('prod_12', this)">🤍</button>
+        <img src="Screenshot_20261027-120740_2.png" alt="Collar Ojo Turco" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Collar Dije Ojo Turco</h2>
+            <p class="product-desc">Cuentas turquesa con amuleto protector en tono azul.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_12">Cantidad:</label>
+              <input type="number" id="qty_prod_12" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Ojo Turco', 18000, 'qty_prod_12')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 13 -->
+      <article class="catalog-card" data-id="prod_13">
+        <button class="btn-fav" onclick="toggleFavorite('prod_13', this)">🤍</button>
+        <img src="IMG-20261026-WA0008_2.jpg" alt="Collares Marinos" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collares Negros y Dorados</h2>
+            <p class="product-desc">Trío de cadenas finas con dijes marinos (estrella, concha y árbol).</p>
+            <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_13">Cantidad:</label>
+              <input type="number" id="qty_prod_13" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collares Negros y Dorados', 20000, 'qty_prod_13')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 14 -->
+      <article class="catalog-card" data-id="prod_14">
+        <button class="btn-fav" onclick="toggleFavorite('prod_14', this)">🤍</button>
+        <img src="Screenshot_20261027-120740_2.png" alt="Brazalete Articulado" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Zhennice</span>
+            <h2 class="product-name">Brazalete Ancho Articulado</h2>
+            <p class="product-desc">Placas rígidas metálicas en matices marfil, cobre y bronce.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_14">Cantidad:</label>
+              <input type="number" id="qty_prod_14" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$15.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Brazalete Ancho Articulado', 15000, 'qty_prod_14')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 15 -->
+      <article class="catalog-card" data-id="prod_15">
+        <button class="btn-fav" onclick="toggleFavorite('prod_15', this)">🤍</button>
+        <img src="IMG-20261026-WA0009.jpg" alt="Collar Cristales" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Collar Cristales Pasteles</h2>
+            <p class="product-desc">Diseño fluido con piedras semipreciosas en formato Y.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_15">Cantidad:</label>
+              <input type="number" id="qty_prod_15" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Cristales Pasteles', 18000, 'qty_prod_15')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 16 -->
+      <article class="catalog-card" data-id="prod_16">
+        <button class="btn-fav" onclick="toggleFavorite('prod_16', this)">🤍</button>
+        <img src="Screenshot_20261027-120740_2.png" alt="Collar Doble Perlas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collar Doble Perlas & Piedras</h2>
+            <p class="product-desc">Cadena sutil con incrustaciones de tono ocre y ámbar.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_16">Cantidad:</label>
+              <input type="number" id="qty_prod_16" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Doble Perlas & Piedras', 18000, 'qty_prod_16')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 17 -->
+      <article class="catalog-card" data-id="prod_17">
+        <button class="btn-fav" onclick="toggleFavorite('prod_17', this)">🤍</button>
+        <img src="IMG-20261026-WA0006.jpg" alt="Tobilleras Marinas" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Zhennice</span>
+            <h2 class="product-name">Set Tobilleras Marinas</h2>
+            <p class="product-desc">Conjunto tejido en negro con cuentas y dijes dorados.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 6 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_17">Cantidad:</label>
+              <input type="number" id="qty_prod_17" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$15.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Set Tobilleras Marinas', 15000, 'qty_prod_17')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 18 -->
+      <article class="catalog-card" data-id="prod_18">
+        <button class="btn-fav" onclick="toggleFavorite('prod_18', this)">🤍</button>
+        <img src="IMG-20261020-WA0004.jpg" alt="Set Pulseras Turquesa" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Set Pulseras Turquesa & Triángulo</h2>
+            <p class="product-desc">Combinación de cuentas turquesa, corazón y marmolado.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_18">Cantidad:</label>
+              <input type="number" id="qty_prod_18" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Set Pulseras Turquesa', 20000, 'qty_prod_18')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 19 -->
+      <article class="catalog-card" data-id="prod_19">
+        <button class="btn-fav" onclick="toggleFavorite('prod_19', this)">🤍</button>
+        <img src="IMG-20261020-WA0003.jpg" alt="Set Pulseras Negras" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Zhennice</span>
+            <h2 class="product-name">Set Pulseras Negras Minimalistas</h2>
+            <p class="product-desc">Juego de 4 brazaletes con cuentas facetadas y barra dorada.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_19">Cantidad:</label>
+              <input type="number" id="qty_prod_19" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$15.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Set Pulseras Negras', 15000, 'qty_prod_19')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 20 -->
+      <article class="catalog-card" data-id="prod_20">
+        <button class="btn-fav" onclick="toggleFavorite('prod_20', this)">🤍</button>
+        <img src="Screenshot_20261027-120803_2.png" alt="Set Pulseras Ocre" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Set Pulseras Ocre & Café</h2>
+            <p class="product-desc">Brazaletes múltiples dorados con cuentas de cristal tostado.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_20">Cantidad:</label>
+              <input type="number" id="qty_prod_20" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Set Pulseras Ocre & Café', 20000, 'qty_prod_20')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 21 -->
+      <article class="catalog-card" data-id="prod_21">
+        <button class="btn-fav" onclick="toggleFavorite('prod_21', this)">🤍</button>
+        <img src="Screenshot_20261027-120803_2.png" alt="Brazalete Geométrico" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Zhennice</span>
+            <h2 class="product-name">Brazalete Geométrico Cuadrado</h2>
+            <p class="product-desc">Placas caladas articuladas en tonos beige y oro mate.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_21">Cantidad:</label>
+              <input type="number" id="qty_prod_21" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$15.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Brazalete Geométrico Cuadrado', 15000, 'qty_prod_21')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 22 -->
+      <article class="catalog-card" data-id="prod_22">
+        <button class="btn-fav" onclick="toggleFavorite('prod_22', this)">🤍</button>
+        <img src="IMG-20261020-WA0011.jpg" alt="Collar Dije Madera" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Collar Cuero & Dije Étnico</h2>
+            <p class="product-desc">Cordón fino con cuentas turquesas y medalla de bronce.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_22">Cantidad:</label>
+              <input type="number" id="qty_prod_22" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Cuero & Dije Étnico', 18000, 'qty_prod_22')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 23 -->
+      <article class="catalog-card" data-id="prod_23">
+        <button class="btn-fav" onclick="toggleFavorite('prod_23', this)">🤍</button>
+        <img src="Screenshot_20261027-120825_2.png" alt="Collar Circular Blanco" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collar Largo Dije Circular</h2>
+            <p class="product-desc">Cadena extensible clara con adorno circular de perlas.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_23">Cantidad:</label>
+              <input type="number" id="qty_prod_23" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Largo Dije Circular', 18000, 'qty_prod_23')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 24 -->
+      <article class="catalog-card" data-id="prod_24">
+        <button class="btn-fav" onclick="toggleFavorite('prod_24', this)">🤍</button>
+        <img src="Screenshot_20261027-120847.png" alt="Collar Árbol de la Vida" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Collar Árbol de la Vida</h2>
+            <p class="product-desc">Tira de cuero con medalla tallada en madera (varios colores).</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_24">Cantidad:</label>
+              <input type="number" id="qty_prod_24" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$18.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Árbol de la Vida', 18000, 'qty_prod_24')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 25 -->
+      <article class="catalog-card" data-id="prod_25">
+        <button class="btn-fav" onclick="toggleFavorite('prod_25', this)">🤍</button>
+        <img src="Screenshot_20261027-120847.png" alt="Collar Hilos Rojos" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collar Múltiples Hilos Rojos</h2>
+            <p class="product-desc">Manojo de hilos rojos intensos con aro en contraste dorado.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_25">Cantidad:</label>
+              <input type="number" id="qty_prod_25" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Hilos Rojos', 20000, 'qty_prod_25')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 26 -->
+      <article class="catalog-card" data-id="prod_26">
+        <button class="btn-fav" onclick="toggleFavorite('prod_26', this)">🤍</button>
+        <img src="IMG-20261020-WA0010.jpg" alt="Collar Gota Azul" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Knot & Lume</span>
+            <h2 class="product-name">Collar Plata & Cristal Azul</h2>
+            <p class="product-desc">Cadena de plata delicada con colgante gota de cristal saphire.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 3 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_26">Cantidad:</label>
+              <input type="number" id="qty_prod_26" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Plata & Cristal Azul', 20000, 'qty_prod_26')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 27 -->
+      <article class="catalog-card" data-id="prod_27">
+        <button class="btn-fav" onclick="toggleFavorite('prod_27', this)">🤍</button>
+        <img src="Screenshot_20261027-120911_2.png" alt="Collar Borla Dorada" class="card-img">
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Joyas • Perfect Match</span>
+            <h2 class="product-name">Collar Geométrico Borla Dorada</h2>
+            <p class="product-desc">Cadena larga estilizada con borla inferior en metal dorado.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 4 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_27">Cantidad:</label>
+              <input type="number" id="qty_prod_27" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$20.000</span>
+            <button class="btn-add" onclick="addCustomToCart('Collar Borla Dorada', 20000, 'qty_prod_27')">+ Carrito</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROD 28 -->
+      <article class="catalog-card" data-id="prod_28">
+        <button class="btn-fav" onclick="toggleFavorite('prod_28', this)">🤍</button>
+        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#b59460;font-family:'Cormorant Garamond',serif;font-size:1.6rem;background:#f0eae1;">✦ ECO PACK ✦</div>
+        <div class="card-body">
+          <div>
+            <span class="product-tag">Sustentabilidad • OWLS LOOK</span>
+            <h2 class="product-name">Empaque Biodegradable</h2>
+            <p class="product-desc">Caja ecológica con envoltorio de regalo y tarjeta personalizada.</p>
+            <div class="product-stock-badge">📦 Stock disponible: 20 unidades</div>
+            <div class="card-quantity-selector">
+              <label for="qty_prod_28">Cantidad:</label>
+              <input type="number" id="qty_prod_28" class="card-qty-input" value="1" min="1">
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="product-price">$3.500</span>
+            <button class="btn-add" onclick="addCustomToCart('Empaque Biodegradable', 3500, 'qty_prod_28')">+ Carrito</button>
           </div>
         </div>
       </article>
@@ -615,7 +1077,7 @@
     <span class="cart-count" id="cartCount">0</span>
   </button>
 
-  <!-- MODAL / DESPLEGABLE DEL CARRITO -->
+  <!-- MODAL DEL CARRITO -->
   <div class="cart-modal-overlay" id="cartOverlay" onclick="closeCartOnOverlay(event)">
     <div class="cart-drawer">
       <div class="cart-header">
@@ -645,7 +1107,7 @@
   <script>
     let cart = [];
 
-    // ENLACE DIRECTO DE CONEXIÓN CON TU GOOGLE SHEETS
+    // URL DE TU PLANILLA GOOGLE SHEETS
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1rEa15jOGfDvqYWa_Kljb5QFsyYfpSdJOs96ldhGyrHs/export?format=csv";
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -719,7 +1181,7 @@
           }
         });
       } catch (error) {
-        console.error("Error cargando datos de Google Sheets:", error);
+        console.error("Sincronizando stock por defecto...", error);
       }
     }
 
@@ -840,3 +1302,5 @@
 
 </body>
 </html>
+
+        
