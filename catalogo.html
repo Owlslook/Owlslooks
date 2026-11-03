@@ -467,10 +467,8 @@
             <h2 class="product-name">Chaleco Texturado Caloe</h2>
             <p class="product-desc">Prendas exclusivas de diseño nacional con impecables terminaciones.</p>
             
-            <!-- Stock Disponible -->
             <div class="product-stock-badge">📦 Stock disponible: 5 unidades</div>
 
-            <!-- Selector de Cantidad -->
             <div class="card-quantity-selector">
               <label for="qty_prod_1">Cantidad a pedir:</label>
               <input type="number" id="qty_prod_1" class="card-qty-input" value="1" min="1" max="5">
@@ -647,9 +645,83 @@
   <script>
     let cart = [];
 
+    // ENLACE DIRECTO DE CONEXIÓN CON TU GOOGLE SHEETS
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1rEa15jOGfDvqYWa_Kljb5QFsyYfpSdJOs96ldhGyrHs/export?format=csv";
+
     document.addEventListener("DOMContentLoaded", () => {
       loadFavoritesState();
+      syncStockFromSheets();
     });
+
+    async function syncStockFromSheets() {
+      try {
+        const response = await fetch(SHEET_CSV_URL);
+        const data = await response.text();
+        
+        const rows = data.split('\n').slice(1);
+        
+        rows.forEach(row => {
+          const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+          
+          if (columns.length >= 3) {
+            const prodId = columns[0].replace(/"/g, '').trim();
+            const stockQty = parseInt(columns[2].replace(/"/g, '').trim()) || 0;
+            
+            let priceVal = null;
+            if (columns[3]) {
+              const rawPrice = columns[3].replace(/[^0-9]/g, '');
+              if (rawPrice) priceVal = parseInt(rawPrice);
+            }
+
+            const card = document.querySelector(`[data-id="${prodId}"]`);
+            if (card) {
+              const badge = card.querySelector('.product-stock-badge');
+              const input = card.querySelector('.card-qty-input');
+              const priceSpan = card.querySelector('.product-price');
+              const btnAdd = card.querySelector('.btn-add');
+
+              if (priceVal && priceSpan) {
+                priceSpan.textContent = `$${priceVal.toLocaleString('es-CL')}`;
+              }
+
+              if (stockQty > 0) {
+                if (badge) {
+                  badge.textContent = `📦 Stock disponible: ${stockQty} unidades`;
+                  badge.style.backgroundColor = '#e8f5e9';
+                  badge.style.color = '#2e7d32';
+                }
+                if (input) {
+                  input.max = stockQty;
+                  input.disabled = false;
+                }
+                if (btnAdd) {
+                  btnAdd.disabled = false;
+                  btnAdd.style.backgroundColor = '#3a2e2b';
+                  btnAdd.textContent = '+ Carrito';
+                }
+              } else {
+                if (badge) {
+                  badge.textContent = `❌ Agotado`;
+                  badge.style.backgroundColor = '#ffebee';
+                  badge.style.color = '#c62828';
+                }
+                if (input) {
+                  input.value = 0;
+                  input.disabled = true;
+                }
+                if (btnAdd) {
+                  btnAdd.disabled = true;
+                  btnAdd.style.backgroundColor = '#ccc';
+                  btnAdd.textContent = 'Agotado';
+                }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.error("Error cargando datos de Google Sheets:", error);
+      }
+    }
 
     function addCustomToCart(title, price, inputId) {
       const qtyInput = document.getElementById(inputId);
@@ -720,7 +792,6 @@
       }
     }
 
-    /* GESTIÓN DE FAVORITOS (PERSISTENTE CON LOCALSTORAGE) */
     function toggleFavorite(prodId, btn) {
       let favorites = JSON.parse(localStorage.getItem('owls_favorites')) || {};
       
@@ -745,7 +816,6 @@
       });
     }
 
-    /* PEDIDO POR INSTAGRAM CON COPIA AUTOMÁTICA DE CÁLCULOS */
     function sendInstagramOrder() {
       if (cart.length === 0) {
         alert('Tu carrito está vacío.');
@@ -770,4 +840,3 @@
 
 </body>
 </html>
- 
