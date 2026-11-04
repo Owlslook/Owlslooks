@@ -25,7 +25,7 @@
       padding: 0 1rem 6rem 1rem;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR CON LOGO */
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
     .site-nav {
       width: 100%;
       background-color: #ffffff;
@@ -65,6 +65,7 @@
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -118,7 +119,34 @@
       line-height: 1.6;
     }
 
-    /* GRID DE PRODUCTOS */
+    /* FILTROS DE CATEGORÍAS */
+    .category-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-bottom: -1rem;
+    }
+
+    .filter-btn {
+      background-color: #ffffff;
+      border: 1px solid rgba(181, 148, 96, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #5c4a43;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: #3a2e2b;
+      color: #f7f5f0;
+      border-color: #3a2e2b;
+    }
+
     .section-heading {
       width: 100%;
       display: flex;
@@ -135,6 +163,7 @@
       color: #3a2e2b;
     }
 
+    /* GRID DE PRODUCTOS */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -314,6 +343,56 @@
       transform: scale(0.95);
     }
 
+    /* SOBRE NOSOTROS Y CONTACTO */
+    .about-section, .contact-section {
+      width: 100%;
+      background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
+      color: #f7f5f0;
+      padding: 3.5rem 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-section h2, .contact-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #b59460;
+    }
+
+    .about-section p, .contact-section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 1.5rem auto;
+      color: #e8e3dc;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-btn.wa { background-color: #25d366; }
+    .contact-btn.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .contact-btn:hover { opacity: 0.9; }
+
     /* FAQ */
     .faq-section {
       width: 100%;
@@ -385,32 +464,6 @@
     .faq-item.active .faq-answer {
       max-height: 200px;
       padding: 0 1.2rem 1.2rem 1.2rem;
-    }
-
-    /* SOBRE NOSOTROS */
-    .about-section {
-      width: 100%;
-      background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
-      color: #f7f5f0;
-      padding: 3.5rem 2.5rem;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .about-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: #b59460;
-    }
-
-    .about-section p {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #e8e3dc;
     }
 
     /* CARRITO FLOTANTE Y MODAL */
@@ -601,9 +654,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .btn-checkout-wa:hover {
-      opacity: 0.9;
-    }
+    .btn-checkout-wa:hover { opacity: 0.9; }
 
     .btn-checkout-ig {
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
@@ -623,9 +674,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .btn-checkout-ig:hover {
-      opacity: 0.9;
-    }
+    .btn-checkout-ig:hover { opacity: 0.9; }
 
     .footer-copy {
       font-size: 0.75rem;
@@ -641,24 +690,27 @@
         padding: 1rem;
       }
       .nav-links {
-        gap: 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR CON LOGO -->
+  <!-- BARRA DE MENÚ SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
-      <img src="logo-owl.png" alt="Logo Owls Look" class="nav-logo">
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo">
       <span class="nav-brand-text">OWLS LOOK</span>
     </a>
     <ul class="nav-links">
       <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#sobre-nosotros">Nosotros</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#" onclick="toggleCartModal(); return false;">Carrito (<span id="navCartCount">0</span>)</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#" onclick="toggleCartModal(); return false;">🛒 (<span id="navCartCount">0</span>)</a></li>
     </ul>
   </nav>
 
@@ -670,15 +722,19 @@
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional seleccionadas exclusivamente para resaltar tu estilo.</p>
     </header>
 
-    <div class="section-heading">
-      <h2>Novedades y Colección</h2>
+    <!-- BARRA DE FILTROS POR CATEGORÍA -->
+    <div class="category-filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">✨ Todos</button>
+      <button class="filter-btn" onclick="filterCategory('ropa', this)">👗 Ropa Femenina</button>
+      <button class="filter-btn" onclick="filterCategory('calzado', this)">👢 Calzado Certificado</button>
+      <button class="filter-btn" onclick="filterCategory('joyas', this)">💎 Joyas & Accesorios</button>
     </div>
 
     <!-- GRID DE PRODUCTOS -->
     <main class="catalog-grid" id="productGrid">
 
-      <!-- PROD 1 -->
-      <article class="catalog-card" data-id="prod_1">
+      <!-- PROD 1: ROPA -->
+      <article class="catalog-card" data-id="prod_1" data-category="ropa">
         <button class="btn-fav" onclick="toggleFavorite('prod_1', this)">🤍</button>
         <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe" class="card-img">
         <div class="card-body">
@@ -699,8 +755,8 @@
         </div>
       </article>
 
-      <!-- PROD 2 -->
-      <article class="catalog-card" data-id="prod_2">
+      <!-- PROD 2: ROPA -->
+      <article class="catalog-card" data-id="prod_2" data-category="ropa">
         <button class="btn-fav" onclick="toggleFavorite('prod_2', this)">🤍</button>
         <img src="IMG-20261020-WA0014.jpg" alt="Chaleco Caloe Rojo" class="card-img">
         <div class="card-body">
@@ -721,8 +777,8 @@
         </div>
       </article>
 
-      <!-- PROD 3 -->
-      <article class="catalog-card" data-id="prod_3">
+      <!-- PROD 3: ROPA -->
+      <article class="catalog-card" data-id="prod_3" data-category="ropa">
         <button class="btn-fav" onclick="toggleFavorite('prod_3', this)">🤍</button>
         <img src="IMG-20261020-WA0013.jpg" alt="Chaleco Caloe Tostado" class="card-img">
         <div class="card-body">
@@ -743,8 +799,8 @@
         </div>
       </article>
 
-      <!-- PROD 4 -->
-      <article class="catalog-card" data-id="prod_4">
+      <!-- PROD 4: ROPA -->
+      <article class="catalog-card" data-id="prod_4" data-category="ropa">
         <button class="btn-fav" onclick="toggleFavorite('prod_4', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -765,8 +821,8 @@
         </div>
       </article>
 
-      <!-- PROD 5 -->
-      <article class="catalog-card" data-id="prod_5">
+      <!-- PROD 5: CALZADO -->
+      <article class="catalog-card" data-id="prod_5" data-category="calzado">
         <button class="btn-fav" onclick="toggleFavorite('prod_5', this)">🤍</button>
         <img src="IMG-20261020-WA0009.jpg" alt="Botas Begoña" class="card-img">
         <div class="card-body">
@@ -787,8 +843,8 @@
         </div>
       </article>
 
-      <!-- PROD 6 -->
-      <article class="catalog-card" data-id="prod_6">
+      <!-- PROD 6: CALZADO -->
+      <article class="catalog-card" data-id="prod_6" data-category="calzado">
         <button class="btn-fav" onclick="toggleFavorite('prod_6', this)">🤍</button>
         <img src="IMG-20261020-WA0008.jpg" alt="Botas Eda Manzonni" class="card-img">
         <div class="card-body">
@@ -809,8 +865,8 @@
         </div>
       </article>
 
-      <!-- PROD 7 -->
-      <article class="catalog-card" data-id="prod_7">
+      <!-- PROD 7: CALZADO -->
+      <article class="catalog-card" data-id="prod_7" data-category="calzado">
         <button class="btn-fav" onclick="toggleFavorite('prod_7', this)">🤍</button>
         <img src="IMG-20261020-WA0007.jpg" alt="Botas Degas" class="card-img">
         <div class="card-body">
@@ -831,8 +887,8 @@
         </div>
       </article>
 
-      <!-- PROD 8 -->
-      <article class="catalog-card" data-id="prod_8">
+      <!-- PROD 8: CALZADO -->
+      <article class="catalog-card" data-id="prod_8" data-category="calzado">
         <button class="btn-fav" onclick="toggleFavorite('prod_8', this)">🤍</button>
         <img src="IMG-20261020-WA0006.jpg" alt="Botas Eda Manzini Rojas" class="card-img">
         <div class="card-body">
@@ -853,8 +909,8 @@
         </div>
       </article>
 
-      <!-- PROD 9 -->
-      <article class="catalog-card" data-id="prod_9">
+      <!-- PROD 9: CALZADO -->
+      <article class="catalog-card" data-id="prod_9" data-category="calzado">
         <button class="btn-fav" onclick="toggleFavorite('prod_9', this)">🤍</button>
         <img src="IMG-20261020-WA0005.jpg" alt="Botas Eda Manzinni Blancas" class="card-img">
         <div class="card-body">
@@ -875,8 +931,8 @@
         </div>
       </article>
 
-      <!-- PROD 10 -->
-      <article class="catalog-card" data-id="prod_10">
+      <!-- PROD 10: JOYAS -->
+      <article class="catalog-card" data-id="prod_10" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_10', this)">🤍</button>
         <img src="IMG-20261020-WA0016.jpg" alt="Collares Multi-capa Turquesas" class="card-img">
         <div class="card-body">
@@ -897,8 +953,8 @@
         </div>
       </article>
 
-      <!-- PROD 11 -->
-      <article class="catalog-card" data-id="prod_11">
+      <!-- PROD 11: JOYAS / ACCESORIOS -->
+      <article class="catalog-card" data-id="prod_11" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_11', this)">🤍</button>
         <img src="IMG-20261020-WA0017.jpg" alt="Cinto Ancho Multitiras Negro" class="card-img">
         <div class="card-body">
@@ -919,8 +975,8 @@
         </div>
       </article>
 
-      <!-- PROD 12 -->
-      <article class="catalog-card" data-id="prod_12">
+      <!-- PROD 12: JOYAS -->
+      <article class="catalog-card" data-id="prod_12" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_12', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -941,8 +997,8 @@
         </div>
       </article>
 
-      <!-- PROD 13 -->
-      <article class="catalog-card" data-id="prod_13">
+      <!-- PROD 13: JOYAS -->
+      <article class="catalog-card" data-id="prod_13" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_13', this)">🤍</button>
         <img src="IMG-20261026-WA0007.jpg" alt="Collares Multicapa Negros y Dorados" class="card-img">
         <div class="card-body">
@@ -963,8 +1019,8 @@
         </div>
       </article>
 
-      <!-- PROD 14 -->
-      <article class="catalog-card" data-id="prod_14">
+      <!-- PROD 14: JOYAS -->
+      <article class="catalog-card" data-id="prod_14" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_14', this)">🤍</button>
         <img src="IMG-20261020-WA0015.jpg" alt="Brazalete Ancho Articulado" class="card-img">
         <div class="card-body">
@@ -985,8 +1041,8 @@
         </div>
       </article>
 
-      <!-- PROD 15 -->
-      <article class="catalog-card" data-id="prod_15">
+      <!-- PROD 15: JOYAS -->
+      <article class="catalog-card" data-id="prod_15" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_15', this)">🤍</button>
         <img src="IMG-20261026-WA0009.jpg" alt="Collar de Cristales Pasteles" class="card-img">
         <div class="card-body">
@@ -1007,8 +1063,8 @@
         </div>
       </article>
 
-      <!-- PROD 16 -->
-      <article class="catalog-card" data-id="prod_16">
+      <!-- PROD 16: JOYAS -->
+      <article class="catalog-card" data-id="prod_16" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_16', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1029,8 +1085,8 @@
         </div>
       </article>
 
-      <!-- PROD 17 -->
-      <article class="catalog-card" data-id="prod_17">
+      <!-- PROD 17: JOYAS -->
+      <article class="catalog-card" data-id="prod_17" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_17', this)">🤍</button>
         <img src="IMG-20261026-WA0006.jpg" alt="Set de Tobilleras Marinas Negras" class="card-img">
         <div class="card-body">
@@ -1051,8 +1107,8 @@
         </div>
       </article>
 
-      <!-- PROD 18 -->
-      <article class="catalog-card" data-id="prod_18">
+      <!-- PROD 18: JOYAS -->
+      <article class="catalog-card" data-id="prod_18" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_18', this)">🤍</button>
         <img src="IMG-20261020-WA0004.jpg" alt="Set de Pulseras Turquesas y Geométrico" class="card-img">
         <div class="card-body">
@@ -1073,8 +1129,8 @@
         </div>
       </article>
 
-      <!-- PROD 19 -->
-      <article class="catalog-card" data-id="prod_19">
+      <!-- PROD 19: JOYAS -->
+      <article class="catalog-card" data-id="prod_19" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_19', this)">🤍</button>
         <img src="IMG-20261020-WA0003.jpg" alt="Set de Pulseras Negras y Doradas" class="card-img">
         <div class="card-body">
@@ -1095,8 +1151,8 @@
         </div>
       </article>
 
-      <!-- PROD 20 -->
-      <article class="catalog-card" data-id="prod_20">
+      <!-- PROD 20: JOYAS -->
+      <article class="catalog-card" data-id="prod_20" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_20', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1117,8 +1173,8 @@
         </div>
       </article>
 
-      <!-- PROD 21 -->
-      <article class="catalog-card" data-id="prod_21">
+      <!-- PROD 21: JOYAS -->
+      <article class="catalog-card" data-id="prod_21" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_21', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1139,8 +1195,8 @@
         </div>
       </article>
 
-      <!-- PROD 22 -->
-      <article class="catalog-card" data-id="prod_22">
+      <!-- PROD 22: JOYAS -->
+      <article class="catalog-card" data-id="prod_22" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_22', this)">🤍</button>
         <img src="IMG-20261020-WA0011.jpg" alt="Collar de Cuero con Dije Étnico de Madera" class="card-img">
         <div class="card-body">
@@ -1161,8 +1217,8 @@
         </div>
       </article>
 
-      <!-- PROD 23 -->
-      <article class="catalog-card" data-id="prod_23">
+      <!-- PROD 23: JOYAS -->
+      <article class="catalog-card" data-id="prod_23" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_23', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1183,8 +1239,8 @@
         </div>
       </article>
 
-      <!-- PROD 24 -->
-      <article class="catalog-card" data-id="prod_24">
+      <!-- PROD 24: JOYAS -->
+      <article class="catalog-card" data-id="prod_24" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_24', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1205,8 +1261,8 @@
         </div>
       </article>
 
-      <!-- PROD 25 -->
-      <article class="catalog-card" data-id="prod_25">
+      <!-- PROD 25: JOYAS -->
+      <article class="catalog-card" data-id="prod_25" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_25', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1227,8 +1283,8 @@
         </div>
       </article>
 
-      <!-- PROD 26 -->
-      <article class="catalog-card" data-id="prod_26">
+      <!-- PROD 26: JOYAS -->
+      <article class="catalog-card" data-id="prod_26" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_26', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1249,8 +1305,8 @@
         </div>
       </article>
 
-      <!-- PROD 27 -->
-      <article class="catalog-card" data-id="prod_27">
+      <!-- PROD 27: JOYAS -->
+      <article class="catalog-card" data-id="prod_27" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_27', this)">🤍</button>
         <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
@@ -1271,8 +1327,8 @@
         </div>
       </article>
 
-      <!-- PROD 28 -->
-      <article class="catalog-card" data-id="prod_28">
+      <!-- PROD 28: ACCESORIOS -->
+      <article class="catalog-card" data-id="prod_28" data-category="joyas">
         <button class="btn-fav" onclick="toggleFavorite('prod_28', this)">🤍</button>
         <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#b59460;font-family:'Cormorant Garamond',serif;font-size:1.6rem;background:#f0eae1;">✦ ECO PACK ✦</div>
         <div class="card-body">
@@ -1301,7 +1357,7 @@
       <p>Nos dedicamos a curar y ofrecer moda femenina, calzado certificado y joyas exclusivas de origen nacional. Creemos en la elegancia atemporal, el detalle único y en entregarte piezas que reflejen tu personalidad con el mejor estándar de calidad.</p>
     </section>
 
-    <!-- FAQ -->
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
     <section class="faq-section" id="faq">
       <h2 class="faq-title">Preguntas Frecuentes (FAQ)</h2>
       <div class="faq-container">
@@ -1316,7 +1372,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Cuáles son los métodos de pago disponibles?</button>
           <div class="faq-answer">
-            Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria o los medios acordados de forma segura.
+            Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria u otros medios seguros.
           </div>
         </div>
 
@@ -1334,6 +1390,16 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact-section" id="contacto">
+      <h2>Contáctanos 💌</h2>
+      <p>¿Tienes dudas con tu talla, un pedido personalizado o consultas sobre envíos? Escríbenos directamente y te atenderemos con gusto.</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/56932662787" target="_blank" class="contact-btn wa">🟢 Escribir por WhatsApp</a>
+        <a href="https://ig.me/m/somos.owlslook" target="_blank" class="contact-btn ig">🟣 Mensaje en Instagram</a>
       </div>
     </section>
 
@@ -1389,6 +1455,21 @@
       syncStockFromSheets();
     });
 
+    // Filtro por categorías
+    function filterCategory(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.catalog-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Desplegable de FAQ interactivo
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const wasActive = item.classList.contains('active');
@@ -1591,12 +1672,16 @@
         return;
       }
 
-      const text = generateOrderTest();
+      const text = generateOrderText();
+      
+      // Copia el texto al portapapeles de manera segura
       navigator.clipboard.writeText(text).then(() => {
         alert("📋 ¡Mensaje copiado con éxito!\n\nAl abrirse Instagram, mantén presionado el chat y selecciona 'Pegar' para enviar tu pedido.");
         window.open("https://ig.me/m/somos.owlslook", "_blank");
       }).catch(err => {
+        // Fallback por si el navegador bloquea el portapapeles automático
         prompt("Copia este texto para tu pedido de Instagram:", text);
+        window.open("https://ig.me/m/somos.owlslook", "_blank");
       });
     }
   </script>
