@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -25,12 +25,12 @@
       padding: 0 1rem 6rem 1rem;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR (MENÚ) */
+    /* BARRA DE NAVEGACIÓN SUPERIOR CON LOGO */
     .site-nav {
       width: 100%;
       background-color: #ffffff;
       border-bottom: 1px solid rgba(181, 148, 96, 0.2);
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,12 +41,24 @@
     }
 
     .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-brand-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       color: #3a2e2b;
-      text-decoration: none;
     }
 
     .nav-links {
@@ -302,7 +314,7 @@
       transform: scale(0.95);
     }
 
-    /* SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) */
+    /* FAQ */
     .faq-section {
       width: 100%;
       background-color: #ffffff;
@@ -375,7 +387,7 @@
       padding: 0 1.2rem 1.2rem 1.2rem;
     }
 
-    /* SECCIÓN SOBRE NOSOTROS */
+    /* SOBRE NOSOTROS */
     .about-section {
       width: 100%;
       background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
@@ -622,7 +634,6 @@
       text-align: center;
     }
 
-    /* RESPONSIVE NAV */
     @media (max-width: 600px) {
       .site-nav {
         flex-direction: column;
@@ -637,9 +648,12 @@
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR -->
+  <!-- BARRA DE MENÚ SUPERIOR CON LOGO -->
   <nav class="site-nav">
-    <a href="#" class="nav-brand">OWLS LOOK 🦉✨</a>
+    <a href="index.html" class="nav-brand">
+      <img src="logo-owl.png" alt="Logo Owls Look" class="nav-logo">
+      <span class="nav-brand-text">OWLS LOOK</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#sobre-nosotros">Nosotros</a></li>
@@ -660,7 +674,7 @@
       <h2>Novedades y Colección</h2>
     </div>
 
-    <!-- GRID DE PRODUCTOS (28 ÍTEMS) -->
+    <!-- GRID DE PRODUCTOS -->
     <main class="catalog-grid" id="productGrid">
 
       <!-- PROD 1 -->
@@ -1281,13 +1295,13 @@
 
     </main>
 
-    <!-- SECCIÓN SOBRE NOSOTROS -->
+    <!-- SOBRE NOSOTROS -->
     <section class="about-section" id="sobre-nosotros">
       <h2>Sobre OWLS LOOK 🦉✨</h2>
       <p>Nos dedicamos a curar y ofrecer moda femenina, calzado certificado y joyas exclusivas de origen nacional. Creemos en la elegancia atemporal, el detalle único y en entregarte piezas que reflejen tu personalidad con el mejor estándar de calidad.</p>
     </section>
 
-    <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
+    <!-- FAQ -->
     <section class="faq-section" id="faq">
       <h2 class="faq-title">Preguntas Frecuentes (FAQ)</h2>
       <div class="faq-container">
@@ -1375,14 +1389,10 @@
       syncStockFromSheets();
     });
 
-    // Desplegable de FAQ interactivo
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const wasActive = item.classList.contains('active');
-      
-      // Cierra todos los demás
       document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-      
       if (!wasActive) {
         item.classList.add('active');
       }
@@ -1581,7 +1591,7 @@
         return;
       }
 
-      const text = generateOrderText();
+      const text = generateOrderTest();
       navigator.clipboard.writeText(text).then(() => {
         alert("📋 ¡Mensaje copiado con éxito!\n\nAl abrirse Instagram, mantén presionado el chat y selecciona 'Pegar' para enviar tu pedido.");
         window.open("https://ig.me/m/somos.owlslook", "_blank");
