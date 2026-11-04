@@ -25,7 +25,7 @@
       padding: 0 1rem 6rem 1rem;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR CON LOGO */
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
     .site-nav {
       width: 100%;
       background-color: #ffffff;
@@ -65,6 +65,7 @@
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -139,7 +140,7 @@
       transform: translateY(-2px);
     }
 
-    /* SECCIÓN DE CARACTERÍSTICAS */
+    /* TARJETAS DE CARACTERÍSTICAS */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -179,8 +180,8 @@
       line-height: 1.6;
     }
 
-    /* SOBRE NOSOTROS */
-    .about-section {
+    /* SOBRE NOSOTROS Y CONTACTO */
+    .about-section, .contact-section {
       width: 100%;
       background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
       color: #f7f5f0;
@@ -190,20 +191,44 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    .about-section h2 {
+    .about-section h2, .contact-section h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       margin-bottom: 1rem;
       color: #b59460;
     }
 
-    .about-section p {
+    .about-section p, .contact-section p {
       font-size: 0.95rem;
       line-height: 1.7;
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto 1.5rem auto;
       color: #e8e3dc;
     }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-btn.wa { background-color: #25d366; }
+    .contact-btn.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .contact-btn:hover { opacity: 0.9; }
 
     /* PREGUNTAS FRECUENTES (FAQ) */
     .faq-section {
@@ -292,7 +317,9 @@
         padding: 1rem;
       }
       .nav-links {
-        gap: 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       .hero-title {
         font-size: 2.5rem;
@@ -302,16 +329,17 @@
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR CON LOGO -->
+  <!-- BARRA DE MENÚ SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
-      <img src="logo-owl.png" alt="Logo Owls Look" class="nav-logo">
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo">
       <span class="nav-brand-text">OWLS LOOK</span>
     </a>
     <ul class="nav-links">
       <li><a href="catalogo.html">Catálogo</a></li>
       <li><a href="#sobre-nosotros">Nosotros</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
@@ -324,7 +352,7 @@
       <a href="catalogo.html" class="btn-catalog">Ver Catálogo Completo ✨</a>
     </header>
 
-    <!-- TARJETAS DE CARACTERÍSTICAS -->
+    <!-- TARJETAS DE CARACTERÍSTICAS / CATEGORÍAS -->
     <section class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">👗</div>
@@ -349,7 +377,7 @@
       <p>Nos dedicamos a curar y ofrecer moda femenina, calzado certificado y joyas exclusivas de origen nacional. Creemos en la elegancia atemporal, el detalle único y en entregarte piezas que reflejen tu personalidad con el mejor estándar de calidad.</p>
     </section>
 
-    <!-- FAQ -->
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
     <section class="faq-section" id="faq">
       <h2 class="faq-title">Preguntas Frecuentes (FAQ)</h2>
       <div class="faq-container">
@@ -364,7 +392,7 @@
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Cuáles son los métodos de pago disponibles?</button>
           <div class="faq-answer">
-            Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria o los medios acordados de forma segura.
+            Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria u otros medios seguros.
           </div>
         </div>
 
@@ -385,6 +413,16 @@
       </div>
     </section>
 
+    <!-- CONTACTO -->
+    <section class="contact-section" id="contacto">
+      <h2>Contáctanos 💌</h2>
+      <p>¿Tienes dudas con tu talla, un pedido personalizado o consultas sobre envíos? Escríbenos directamente y te atenderemos con gusto.</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/56932662787" target="_blank" class="contact-btn wa">🟢 Escribir por WhatsApp</a>
+        <a href="https://ig.me/m/somos.owlslook" target="_blank" class="contact-btn ig">🟣 Mensaje en Instagram</a>
+      </div>
+    </section>
+
     <footer style="width: 100%;">
       <p class="footer-copy">© 2026 OWLS LOOK — Todos los derechos reservados.</p>
     </footer>
@@ -392,6 +430,7 @@
   </div>
 
   <script>
+    // Desplegable de FAQ interactivo
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const wasActive = item.classList.contains('active');
