@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -93,30 +93,35 @@
       margin-bottom: 4rem;
     }
 
-    /* HERO / ENCABEZADO PRINCIPAL */
+    /* HERO / ENCABEZADO CON LA IMAGEN DE PORTADA */
     .hero-section {
       background: linear-gradient(rgba(58, 46, 43, 0.75), rgba(58, 46, 43, 0.75)), url('IMG-20261020-WA0012.jpg') center/cover no-repeat;
       color: #ffffff;
-      padding: 5rem 2rem;
+      padding: 4.5rem 2rem;
       border-radius: 16px;
       width: 100%;
       text-align: center;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(181, 148, 96, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
     }
 
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
-      color: #f7f5f0;
+    .hero-logo-img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
     }
 
     .hero-subtitle {
       font-size: 1.05rem;
       max-width: 650px;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto;
       line-height: 1.6;
       color: #e8e3dc;
     }
@@ -297,7 +302,7 @@
     @media (max-width: 600px) {
       .site-nav { flex-direction: column; gap: 0.8rem; padding: 1rem; }
       .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
-      .hero-title { font-size: 2.5rem; }
+      .hero-logo-img { max-width: 240px; }
     }
   </style>
 </head>
@@ -319,9 +324,9 @@
 
   <div class="container">
     
-    <!-- HERO / SECCIÓN PRINCIPAL -->
+    <!-- HERO / SECCIÓN PRINCIPAL CON LA IMAGEN DE PORTADA -->
     <header class="hero-section">
-      <h1 class="hero-title">OWLS LOOK</h1>
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="OWLS LOOK Logo Portada" class="hero-logo-img">
       <p class="hero-subtitle">Moda femenina exclusiva, calzado certificado y joyas de origen nacional diseñadas para resaltar tu esencia y estilo único.</p>
       <a href="catalogo.html" class="btn-catalog">Ver Catálogo Completo ✨</a>
     </header>
