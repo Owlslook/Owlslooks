@@ -122,12 +122,13 @@
       background-color: #ffffff;
     }
 
+    /* AQUÍ CAMBIAMOS A CONTAIN PARA QUE SE VEA LA FOTO COMPLETA */
     .card-img {
       width: 100%;
       height: 240px;
-      object-fit: cover;
+      object-fit: contain;
+      background-color: #f7f5f0;
       border-bottom: 1px solid rgba(181, 148, 96, 0.15);
-      background-color: #ebe7de;
     }
 
     .no-photo-placeholder {
@@ -530,7 +531,7 @@
       <!-- PROD 4 -->
       <article class="catalog-card" data-id="prod_4">
         <button class="btn-fav" onclick="toggleFavorite('prod_4', this)">🤍</button>
-        <img src="IMG-20261020-WA0012.jpg" alt="Chaleco Caloe Verde" class="card-img">
+        <div class="no-photo-placeholder">OWLS LOOK</div>
         <div class="card-body">
           <div>
             <span class="product-tag">Ropa Femenina • Caloe</span>
@@ -1316,3 +1317,4 @@
 
 </body>
 </html>
+
