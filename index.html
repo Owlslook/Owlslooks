@@ -22,7 +22,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 1rem 6rem 1rem;
+      padding: 0 1rem 0 1rem;
     }
 
     /* BARRA DE NAVEGACIÓN SUPERIOR */
@@ -90,6 +90,7 @@
       align-items: center;
       gap: 3rem;
       margin-top: 2rem;
+      margin-bottom: 4rem;
     }
 
     /* HERO / ENCABEZADO PRINCIPAL */
@@ -158,14 +159,9 @@
       transition: transform 0.3s ease;
     }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
+    .feature-card:hover { transform: translateY(-5px); }
 
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
 
     .feature-title {
       font-family: 'Cormorant Garamond', serif;
@@ -174,14 +170,10 @@
       margin-bottom: 0.8rem;
     }
 
-    .feature-desc {
-      font-size: 0.88rem;
-      color: #6b5851;
-      line-height: 1.6;
-    }
+    .feature-desc { font-size: 0.88rem; color: #6b5851; line-height: 1.6; }
 
-    /* SOBRE NOSOTROS Y CONTACTO */
-    .about-section, .contact-section {
+    /* SOBRE NOSOTROS */
+    .about-section {
       width: 100%;
       background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
       color: #f7f5f0;
@@ -191,46 +183,22 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    .about-section h2, .contact-section h2 {
+    .about-section h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       margin-bottom: 1rem;
       color: #b59460;
     }
 
-    .about-section p, .contact-section p {
+    .about-section p {
       font-size: 0.95rem;
       line-height: 1.7;
       max-width: 700px;
-      margin: 0 auto 1.5rem auto;
+      margin: 0 auto;
       color: #e8e3dc;
     }
 
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      padding: 0.8rem 1.6rem;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #ffffff;
-      transition: opacity 0.3s ease;
-    }
-
-    .contact-btn.wa { background-color: #25d366; }
-    .contact-btn.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-    .contact-btn:hover { opacity: 0.9; }
-
-    /* PREGUNTAS FRECUENTES (FAQ) */
+    /* FAQ */
     .faq-section {
       width: 100%;
       background-color: #ffffff;
@@ -248,11 +216,7 @@
       color: #3a2e2b;
     }
 
-    .faq-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .faq-container { display: flex; flex-direction: column; gap: 1rem; }
 
     .faq-item {
       border: 1px solid rgba(181, 148, 96, 0.25);
@@ -263,73 +227,83 @@
 
     .faq-question {
       width: 100%;
-      background: none;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
+      background: none; border: none;
+      padding: 1.2rem; text-align: left;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #3a2e2b;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 0.95rem; font-weight: 600;
+      color: #3a2e2b; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
-    .faq-question::after {
-      content: '+';
-      font-size: 1.2rem;
-      color: #b59460;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-item.active .faq-question::after {
-      transform: rotate(45deg);
-    }
+    .faq-question::after { content: '+'; font-size: 1.2rem; color: #b59460; transition: transform 0.3s ease; }
+    .faq-item.active .faq-question::after { transform: rotate(45deg); }
 
     .faq-answer {
-      max-height: 0;
-      overflow: hidden;
+      max-height: 0; overflow: hidden;
       transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 1.2rem;
-      font-size: 0.88rem;
-      color: #6b5851;
+      padding: 0 1.2rem; font-size: 0.88rem; color: #6b5851; line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer { max-height: 200px; padding: 0 1.2rem 1.2rem 1.2rem; }
+
+    /* FOOTER PROFESIONAL */
+    .site-footer {
+      width: 100%;
+      background-color: #2b211f;
+      color: #e8e3dc;
+      padding: 3.5rem 2rem 2rem 2rem;
+      border-top: 1px solid rgba(181, 148, 96, 0.3);
+    }
+
+    .footer-content {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: #b59460;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-col p, .footer-col a {
+      font-size: 0.85rem;
+      color: #c5b8b0;
       line-height: 1.6;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
     }
 
-    .faq-item.active .faq-answer {
-      max-height: 200px;
-      padding: 0 1.2rem 1.2rem 1.2rem;
-    }
+    .footer-col a:hover { color: #b59460; }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: #a89a93;
-      margin-top: 2rem;
+    .footer-bottom {
+      max-width: 960px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
       text-align: center;
+      font-size: 0.78rem;
+      color: #9c8a82;
     }
 
     @media (max-width: 600px) {
-      .site-nav {
-        flex-direction: column;
-        gap: 0.8rem;
-        padding: 1rem;
-      }
-      .nav-links {
-        gap: 0.8rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-      }
+      .site-nav { flex-direction: column; gap: 0.8rem; padding: 1rem; }
+      .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+      .hero-title { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
       <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo">
@@ -352,7 +326,7 @@
       <a href="catalogo.html" class="btn-catalog">Ver Catálogo Completo ✨</a>
     </header>
 
-    <!-- TARJETAS DE CARACTERÍSTICAS / CATEGORÍAS -->
+    <!-- CARACTERÍSTICAS -->
     <section class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">👗</div>
@@ -377,69 +351,68 @@
       <p>Nos dedicamos a curar y ofrecer moda femenina, calzado certificado y joyas exclusivas de origen nacional. Creemos en la elegancia atemporal, el detalle único y en entregarte piezas que reflejen tu personalidad con el mejor estándar de calidad.</p>
     </section>
 
-    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <!-- FAQ -->
     <section class="faq-section" id="faq">
       <h2 class="faq-title">Preguntas Frecuentes (FAQ)</h2>
       <div class="faq-container">
-        
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Cómo realizo mi pedido?</button>
-          <div class="faq-answer">
-            Navega por nuestro catálogo, selecciona la cantidad que deseas de cada producto y haz clic en "+ Carrito". Cuando termines, abre tu carrito flotante y elige si deseas enviar tu pedido directamente por **WhatsApp** o por mensaje directo de **Instagram**. ¡El mensaje se redacta solo!
-          </div>
+          <div class="faq-answer">Navega por nuestro catálogo, selecciona la cantidad que deseas de cada producto y haz clic en "+ Carrito". Cuando termines, abre tu carrito flotante y elige si deseas enviar tu pedido directamente por WhatsApp o por mensaje directo de Instagram. ¡El mensaje se redacta solo!</div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Cuáles son los métodos de pago disponibles?</button>
-          <div class="faq-answer">
-            Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria u otros medios seguros.
-          </div>
+          <div class="faq-answer">Una vez que nos envíes tu pedido por WhatsApp o Instagram, coordinamos directamente el pago mediante transferencia bancaria u otros medios seguros.</div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Realizan envíos a todo el país?</button>
-          <div class="faq-answer">
-            Sí, realizamos envíos seguros a distintas regiones. Al momento de confirmar tu pedido en el chat, te informaremos los tiempos estimados de entrega y los valores según tu comuna o ciudad.
-          </div>
+          <div class="faq-answer">Sí, realizamos envíos seguros a distintas regiones. Al momento de confirmar tu pedido en el chat, te informaremos los tiempos estimados de entrega y los valores según tu comuna o ciudad.</div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">¿Las joyas y el calzado son de origen nacional?</button>
-          <div class="faq-answer">
-            Así es. Trabajamos con marcas nacionales seleccionadas y calzado certificado de excelente terminación para garantizar calidad y exclusividad en cada prenda y accesorio.
-          </div>
+          <div class="faq-answer">Así es. Trabajamos con marcas nacionales seleccionadas y calzado certificado de excelente terminación para garantizar calidad y exclusividad en cada prenda y accesorio.</div>
         </div>
-
       </div>
     </section>
-
-    <!-- CONTACTO -->
-    <section class="contact-section" id="contacto">
-      <h2>Contáctanos 💌</h2>
-      <p>¿Tienes dudas con tu talla, un pedido personalizado o consultas sobre envíos? Escríbenos directamente y te atenderemos con gusto.</p>
-      <div class="contact-buttons">
-        <a href="https://wa.me/56932662787" target="_blank" class="contact-btn wa">🟢 Escribir por WhatsApp</a>
-        <a href="https://ig.me/m/somos.owlslook" target="_blank" class="contact-btn ig">🟣 Mensaje en Instagram</a>
-      </div>
-    </section>
-
-    <footer style="width: 100%;">
-      <p class="footer-copy">© 2026 OWLS LOOK — Todos los derechos reservados.</p>
-    </footer>
 
   </div>
 
+  <!-- FOOTER PROFESIONAL ABAJO DEL TODO -->
+  <footer class="site-footer" id="contacto">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>OWLS LOOK 🦉✨</h3>
+        <p>Moda femenina exclusiva, calzado certificado y joyas de origen nacional para realzar tu estilo único.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Enlaces Rápidos</h3>
+        <a href="catalogo.html">Catálogo de Productos</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+      </div>
+      <div class="footer-col">
+        <h3>Atención & Contacto</h3>
+        <p>📱 WhatsApp: +56 9 3266 2787</p>
+        <p>📧 Correo: contacto@owlslook.cl</p>
+        <p>📍 Envíos a todo Chile</p>
+      </div>
+      <div class="footer-col">
+        <h3>Redes Sociales</h3>
+        <a href="https://ig.me/m/somos.owlslook" target="_blank">Instagram: @somos.owlslook</a>
+        <a href="https://wa.me/56932662787" target="_blank">Chat de WhatsApp Directo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 OWLS LOOK — Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
   <script>
-    // Desplegable de FAQ interactivo
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const wasActive = item.classList.contains('active');
       document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-      if (!wasActive) {
-        item.classList.add('active');
-      }
+      if (!wasActive) item.classList.add('active');
     }
   </script>
-
 </body>
 </html>
