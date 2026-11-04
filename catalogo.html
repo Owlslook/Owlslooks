@@ -122,7 +122,6 @@
       background-color: #ffffff;
     }
 
-    /* IMAGEN COMPLETA SIN CORTES */
     .card-img {
       width: 100%;
       height: 240px;
@@ -416,6 +415,34 @@
       font-size: 1.6rem;
       font-weight: 600;
       color: #3a2e2b;
+    }
+
+    .checkout-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .btn-checkout-wa {
+      background-color: #25d366;
+      color: #ffffff;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-checkout-wa:hover {
+      opacity: 0.9;
     }
 
     .btn-checkout-ig {
@@ -1111,8 +1138,11 @@
         </div>
         
         <div class="checkout-buttons">
+          <button class="btn-checkout-wa" onclick="sendWhatsAppOrder()">
+            🟢 Pedir por WhatsApp
+          </button>
           <button class="btn-checkout-ig" onclick="sendInstagramOrder()">
-            🟣 Finalizar Pedido por Instagram (DM)
+            🟣 Pedir por Instagram (DM)
           </button>
         </div>
       </div>
@@ -1121,6 +1151,9 @@
 
   <script>
     let cart = [];
+
+    // NÚMERO DE WHATSAPP CONFIGURADO
+    const WHATSAPP_PHONE = "56932662787"; 
 
     // URL DE TU PLANILLA GOOGLE SHEETS
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1rEa15jOGfDvqYWa_Kljb5QFsyYfpSdJOs96ldhGyrHs/export?format=csv";
@@ -1293,12 +1326,7 @@
       });
     }
 
-    function sendInstagramOrder() {
-      if (cart.length === 0) {
-        alert('Tu carrito está vacío.');
-        return;
-      }
-
+    function generateOrderText() {
       let text = "Hola @somos.owlslook 🦉✨ Me interesa comprar los siguientes productos de su catálogo:\n\n";
       cart.forEach(item => {
         text += `• ${item.qty}x ${item.title} ($${(item.price * item.qty).toLocaleString('es-CL')})\n`;
@@ -1306,9 +1334,35 @@
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       text += `\nTotal estimado: $${total.toLocaleString('es-CL')}.\n¿Me indican cómo coordinamos el pago y el envío?`;
+      return text;
+    }
 
+    function sendWhatsAppOrder() {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
+      const text = generateOrderText();
+      const encodedText = encodeURIComponent(text);
+      
+      // Abre WhatsApp directamente con el mensaje redactado y listo para enviar al número configurado
+      const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedText}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function sendInstagramOrder() {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
+      const text = generateOrderText();
+
+      // Copia automáticamente el texto al portapapeles y abre Instagram DM
       navigator.clipboard.writeText(text).then(() => {
-        alert("📋 ¡Resumen y cálculos del pedido copiados al portapapeles con éxito!\n\nUna vez que abras Instagram, podrás pegar el mensaje en el chat directo (DM) de la tienda.");
+        alert("📋 ¡Mensaje copiado con éxito!\n\nAl abrirse Instagram, mantén presionado el chat y selecciona 'Pegar' para enviar tu pedido.");
+        window.open("https://ig.me/m/somos.owlslook", "_blank");
       }).catch(err => {
         prompt("Copia este texto para tu pedido de Instagram:", text);
       });
