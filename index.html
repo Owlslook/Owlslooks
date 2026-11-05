@@ -25,7 +25,7 @@
       padding: 0 1rem 0 1rem;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR */
+    /* BARRA DE NAVEGACIÓN SUPERIOR (SIN LOGO EN LA ESQUINA) */
     .site-nav {
       width: 100%;
       background-color: #ffffff;
@@ -43,14 +43,7 @@
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
       text-decoration: none;
-    }
-
-    .nav-logo {
-      height: 38px;
-      width: auto;
-      object-fit: contain;
     }
 
     .nav-brand-text {
@@ -93,11 +86,11 @@
       margin-bottom: 4rem;
     }
 
-    /* HERO / SECCIÓN PRINCIPAL CON EL ICONO DEL BÚHO Y TIPOGRAFÍA ELEGANTE */
+    /* HERO / SECCIÓN PRINCIPAL CON FONDO CLARO Y LA IMAGEN COMPLETA */
     .hero-section {
       background-color: #ffffff;
       color: #3a2e2b;
-      padding: 3.5rem 2rem;
+      padding: 4rem 2rem;
       border-radius: 16px;
       width: 100%;
       text-align: center;
@@ -107,29 +100,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1.5rem;
     }
 
-    /* Estilo para el icono del búho centrado y proporcionado */
-    .hero-icon-img {
-      max-width: 110px;
+    .hero-logo-img {
+      max-width: 380px;
       width: 100%;
       height: auto;
       object-fit: contain;
-      margin-bottom: 0.2rem;
-    }
-
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: #3a2e2b;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
-      max-width: 600px;
+      font-size: 1.05rem;
+      max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
       color: #6b5851;
@@ -148,7 +131,6 @@
       text-transform: uppercase;
       transition: background-color 0.3s ease, transform 0.2s ease;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-top: 0.5rem;
     }
 
     .btn-catalog:hover {
@@ -312,15 +294,15 @@
     @media (max-width: 600px) {
       .site-nav { flex-direction: column; gap: 0.8rem; padding: 1rem; }
       .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+      .hero-logo-img { max-width: 280px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA, SIN LOGO IZQUIERDO) -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
-      <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo" onerror="this.style.display='none'">
       <span class="nav-brand-text">OWLS LOOK</span>
     </a>
     <ul class="nav-links">
@@ -333,10 +315,9 @@
 
   <div class="container">
     
-    <!-- HERO / SECCIÓN PRINCIPAL CON EL ICONO DEL BÚHO Y TEXTO ELEGANTE -->
+    <!-- HERO / SECCIÓN PRINCIPAL CON LA IMAGEN COMPLETA EN EL TÍTULO -->
     <header class="hero-section">
-      <img src="logo-owl.png" alt="Ícono Búho Owls Look" class="hero-icon-img" onerror="this.style.display='none'">
-      <h1 class="hero-title">OWLS LOOK</h1>
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="OWLS LOOK Logo Portada" class="hero-logo-img">
       <p class="hero-subtitle">Moda femenina exclusiva, calzado certificado y joyas de origen nacional diseñadas para resaltar tu esencia y estilo único.</p>
       <a href="catalogo.html" class="btn-catalog">Ver Catálogo Completo ✨</a>
     </header>
