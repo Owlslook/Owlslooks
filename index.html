@@ -93,16 +93,16 @@
       margin-bottom: 4rem;
     }
 
-    /* HERO / SECCIÓN PRINCIPAL CON FONDO SÓLIDO Y LOGOTIPO PROTAGONISTA */
+    /* HERO / SECCIÓN PRINCIPAL CON FONDO CLARO PARA QUE EL BÚHO RESALTE */
     .hero-section {
-      background: linear-gradient(135deg, #2b211f 0%, #3a2e2b 100%);
-      color: #ffffff;
-      padding: 4.5rem 2rem;
+      background-color: #ffffff;
+      color: #3a2e2b;
+      padding: 4rem 2rem;
       border-radius: 16px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(181, 148, 96, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(181, 148, 96, 0.25);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -115,7 +115,6 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
     }
 
     .hero-subtitle {
@@ -123,13 +122,13 @@
       max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
-      color: #e8e3dc;
+      color: #6b5851;
     }
 
     .btn-catalog {
       display: inline-block;
-      background-color: #b59460;
-      color: #ffffff;
+      background-color: #3a2e2b;
+      color: #f7f5f0;
       padding: 0.9rem 2.2rem;
       border-radius: 30px;
       text-decoration: none;
@@ -138,11 +137,11 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .btn-catalog:hover {
-      background-color: #9c7b4c;
+      background-color: #b59460;
       transform: translateY(-2px);
     }
 
@@ -311,7 +310,7 @@
   <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
-      <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo">
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="Logo Owls Look" class="nav-logo" onerror="this.style.display='none'">
       <span class="nav-brand-text">OWLS LOOK</span>
     </a>
     <ul class="nav-links">
@@ -324,7 +323,7 @@
 
   <div class="container">
     
-    <!-- HERO / SECCIÓN PRINCIPAL CON EL LOGOTIPO OFICIAL Y FONDO ELEGANTE -->
+    <!-- HERO / SECCIÓN PRINCIPAL CON FONDO CLARO Y LOGOTIPO CLARO -->
     <header class="hero-section">
       <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="OWLS LOOK Logo Portada" class="hero-logo-img">
       <p class="hero-subtitle">Moda femenina exclusiva, calzado certificado y joyas de origen nacional diseñadas para resaltar tu esencia y estilo único.</p>
@@ -332,7 +331,7 @@
     </header>
 
     <!-- CARACTERÍSTICAS -->
-    <section class="features-grid">
+    <features-grid class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">👗</div>
         <h3 class="feature-title">Ropa Femenina Exclusiva</h3>
@@ -348,7 +347,7 @@
         <h3 class="feature-title">Joyas & Accesorios</h3>
         <p class="feature-desc">Detalles que marcan la diferencia: collares, brazaletes y sets ideales para completar tu look.</p>
       </div>
-    </section>
+    </features-grid>
 
     <!-- SOBRE NOSOTROS -->
     <section class="about-section" id="sobre-nosotros">
@@ -421,3 +420,5 @@
   </script>
 </body>
 </html>
+
+      
