@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -559,10 +560,10 @@
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR -->
+  <!-- BARRA DE MENÚ SUPERIOR (CON LA IMAGEN DE LOGO CORREGIDA) -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
-      <img src="Jahdiel Álvarez_20261020_210518_0000 (2).png" alt="Logo Owls Look" class="nav-logo">
+      <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="Logo Owls Look" class="nav-logo" onerror="this.style.display='none'">
       <span class="nav-brand-text">OWLS LOOK</span>
     </a>
     <ul class="nav-links">
@@ -1325,7 +1326,6 @@
   <script>
     let cart = [];
     const WHATSAPP_PHONE = "56932662787"; 
-    // Enlace corregido para exportar correctamente los datos de stock y precios desde Google Sheets
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1OYaLAQvaAykb97j-hukoNbbeHGflsMP0cXLLyCUk7gY/export?format=csv";
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -1333,7 +1333,6 @@
       syncStockFromSheets();
     });
 
-    // Filtro por categorías
     function filterCategory(category, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -1347,7 +1346,6 @@
       });
     }
 
-    // Desplegable de FAQ interactivo
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const wasActive = item.classList.contains('active');
