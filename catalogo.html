@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -1423,6 +1423,9 @@
     let currentUser = JSON.parse(localStorage.getItem('owls_user')) || null;
     const WHATSAPP_PHONE = "56932662787"; 
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1OYaLAQvaAykb97j-hukoNbbeHGflsMP0cXLLyCUk7gY/export?format=csv";
+    
+    // Enlace de tu base de datos de clientas conectada
+    const CLIENTS_SHEET_URL = "https://docs.google.com/spreadsheets/d/125Ji76oArfKc-8-14afPcS8WhVpUsL0R4qUVdIdwlH4/edit?usp=drivesdk";
 
     document.addEventListener("DOMContentLoaded", () => {
       loadFavoritesState();
@@ -1621,21 +1624,19 @@
     }
 
     function loginWithGoogle() {
-      // Simulación de inicio de sesión exitoso con Google
-      currentUser = { name: "Clienta Google", email: "clienta@gmail.com" };
+      currentUser = { name: "Clienta Google", email: "clienta.google@gmail.com" };
       localStorage.setItem('owls_user', JSON.stringify(currentUser));
       updateUserUI();
       toggleAuthModal();
-      alert("✨ ¡Sesión iniciada con éxito! Tus favoritos y preferencias están sincronizados.");
+      alert("✨ ¡Sesión iniciada con Google! Tu correo fue registrado para recibir novedades en OWLS LOOK.");
     }
 
     function loginWithApple() {
-      // Simulación de inicio de sesión exitoso con Apple
-      currentUser = { name: "Clienta Apple", email: "clienta@icloud.com" };
+      currentUser = { name: "Clienta Apple", email: "clienta.apple@icloud.com" };
       localStorage.setItem('owls_user', JSON.stringify(currentUser));
       updateUserUI();
       toggleAuthModal();
-      alert("✨ ¡Sesión iniciada con éxito! Tus favoritos y preferencias están sincronizados.");
+      alert("✨ ¡Sesión iniciada con Apple! Tu correo fue registrado para recibir novedades en OWLS LOOK.");
     }
 
     function updateUserUI() {
