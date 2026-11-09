@@ -79,7 +79,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3rem;
+      gap: 2.5rem;
       margin-top: 2rem;
       margin-bottom: 4rem;
     }
@@ -111,6 +111,52 @@
       line-height: 1.6;
     }
 
+    /* BARRA DE BÚSQUEDA PREMIUM */
+    .search-bar-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .search-input {
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid rgba(181, 148, 96, 0.35);
+      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: #3a2e2b;
+      outline: none;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .search-input::placeholder {
+      color: #a89a93;
+    }
+
+    .search-input:focus {
+      border-color: #b59460;
+      box-shadow: 0 8px 25px rgba(181, 148, 96, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #b59460;
+      pointer-events: none;
+    }
+
     /* FILTROS DE CATEGORÍAS */
     .category-filter-bar {
       display: flex;
@@ -118,7 +164,6 @@
       gap: 0.8rem;
       flex-wrap: wrap;
       width: 100%;
-      margin-bottom: -1rem;
     }
 
     .filter-btn {
@@ -550,7 +595,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR (SÓLO CON EL LOGOTIPO DEL BÚHO) -->
+  <!-- BARRA DE MENÚ SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
       <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="Logo Owls Look" class="nav-logo" onerror="this.style.display='none'">
@@ -572,8 +617,16 @@
       <p class="catalog-subtitle">Moda femenina, calzado y joyas certificadas de origen nacional seleccionadas exclusivamente para resaltar tu estilo.</p>
     </header>
 
+    <!-- BARRA DE BÚSQUEDA PREMIUM -->
+    <div class="search-bar-container">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar prendas, botas, joyas o accesorios..." oninput="filterProducts()">
+      </div>
+    </div>
+
     <!-- BARRA DE FILTROS POR CATEGORÍA -->
-    <div class="category-filter-bar">
+    <div class="category-filter-bar" id="categoryFilterBar">
       <button class="filter-btn active" onclick="filterCategory('all', this)">✨ Todos</button>
       <button class="filter-btn" onclick="filterCategory('ropa', this)">👗 Ropa Femenina</button>
       <button class="filter-btn" onclick="filterCategory('calzado', this)">👢 Calzado Certificado</button>
@@ -1322,12 +1375,29 @@
       syncStockFromSheets();
     });
 
+    let currentCategory = 'all';
+
     function filterCategory(category, btn) {
+      currentCategory = category;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      filterProducts();
+    }
 
-      document.querySelectorAll('.catalog-card').forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.catalog-card');
+
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        const title = card.querySelector('.product-name').textContent.toLowerCase();
+        const desc = card.querySelector('.product-desc').textContent.toLowerCase();
+        const tag = card.querySelector('.product-tag').textContent.toLowerCase();
+
+        const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+        const matchesSearch = (title.includes(query) || desc.includes(query) || tag.includes(query));
+
+        if (matchesCategory && matchesSearch) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -1496,6 +1566,8 @@
       }
       localStorage.setItem('owls_favorites', JSON.stringify(favorites));
     }
+
+    loadFavoritesState();
 
     function loadFavoritesState() {
       let favorites = JSON.parse(localStorage.getItem('owls_favorites')) || {};
