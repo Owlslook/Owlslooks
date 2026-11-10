@@ -67,6 +67,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
 
     .nav-links a:hover {
@@ -519,7 +520,7 @@
       color: #9c8a82;
     }
 
-    /* CARRITO Y MODAL DE LOGIN */
+    /* CARRITO Y MODAL DE LOGIN / HISTORIAL */
     .cart-float-btn {
       position: fixed;
       bottom: 25px;
@@ -599,15 +600,16 @@
     .btn-checkout-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #ffffff; border: none; padding: 0.9rem; border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
     .btn-checkout-ig:hover { opacity: 0.9; }
 
-    /* MODAL DE AUTENTICACIÓN */
+    /* MODAL DE AUTENTICACIÓN Y HISTORIAL */
     .auth-modal {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-color: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 3000;
     }
     .auth-modal.active { display: flex; }
     .auth-box {
-      background: #ffffff; padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 380px; text-align: center;
+      background: #ffffff; padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 420px; text-align: center;
       border: 1px solid rgba(181, 148, 96, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      max-height: 85vh; overflow-y: auto;
     }
     .auth-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #3a2e2b; margin-bottom: 0.5rem; }
     .auth-box p { font-size: 0.85rem; color: #6b5851; margin-bottom: 1.5rem; }
@@ -619,6 +621,33 @@
     .btn-social:hover { background: #f7f5f0; }
     .btn-close-auth { background: none; border: none; color: #888; margin-top: 1rem; cursor: pointer; font-size: 0.85rem; }
 
+    .history-card {
+      background-color: #f7f5f0;
+      border: 1px solid rgba(181, 148, 96, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .history-date {
+      font-size: 0.75rem;
+      color: #b59460;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .history-items {
+      font-size: 0.85rem;
+      color: #3a2e2b;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+    .history-total {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #3a2e2b;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
     @media (max-width: 600px) {
       .site-nav { flex-direction: column; gap: 0.8rem; padding: 1rem; }
       .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
@@ -627,7 +656,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE MENÚ SUPERIOR CON BOTÓN DE CUENTA -->
+  <!-- BARRA DE MENÚ SUPERIOR CON BOTÓN DE CUENTA E HISTORIAL -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
       <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="Logo Owls Look" class="nav-logo" onerror="this.style.display='none'">
@@ -635,8 +664,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#sobre-nosotros">Nosotros</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#" onclick="toggleHistoryModal(); return false;">📜 Historial</a></li>
       <li><a href="#" onclick="toggleAuthModal(); return false;" class="btn-login-nav" id="userAccountBtn">👤 Ingresar</a></li>
       <li><a href="#" onclick="toggleCartModal(); return false;">🛒 (<span id="navCartCount">0</span>)</a></li>
     </ul>
@@ -1362,7 +1390,7 @@
     </div>
   </footer>
 
-  <!-- MODAL DE INICIO DE SESIÓN (GOOGLE / APPLE) -->
+  <!-- MODAL DE INICIO DE SESIÓN -->
   <div class="auth-modal" id="authModal" onclick="closeAuthOnOverlay(event)">
     <div class="auth-box">
       <h3>Mi Cuenta</h3>
@@ -1379,6 +1407,20 @@
       </button>
 
       <button class="btn-close-auth" onclick="toggleAuthModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE HISTORIAL DE PEDIDOS -->
+  <div class="auth-modal" id="historyModal" onclick="closeHistoryOnOverlay(event)">
+    <div class="auth-box">
+      <h3>📜 Tu Historial</h3>
+      <p>Aquí puedes revisar los pedidos anteriores que has realizado en OWLS LOOK.</p>
+      
+      <div id="historyListContainer">
+        <p style="color: #a89a93; font-size: 0.85rem; margin-top: 1.5rem;">No tienes pedidos registrados todavía.</p>
+      </div>
+
+      <button class="btn-close-auth" onclick="toggleHistoryModal()">Cerrar</button>
     </div>
   </div>
 
@@ -1423,14 +1465,12 @@
     let currentUser = JSON.parse(localStorage.getItem('owls_user')) || null;
     const WHATSAPP_PHONE = "56932662787"; 
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1OYaLAQvaAykb97j-hukoNbbeHGflsMP0cXLLyCUk7gY/export?format=csv";
-    
-    // Enlace de tu base de datos de clientas conectada
-    const CLIENTS_SHEET_URL = "https://docs.google.com/spreadsheets/d/125Ji76oArfKc-8-14afPcS8WhVpUsL0R4qUVdIdwlH4/edit?usp=drivesdk";
 
     document.addEventListener("DOMContentLoaded", () => {
       loadFavoritesState();
       syncStockFromSheets();
       updateUserUI();
+      renderHistoryUI();
     });
 
     let currentCategory = 'all';
@@ -1623,6 +1663,18 @@
       }
     }
 
+    function toggleHistoryModal() {
+      const modal = document.getElementById('historyModal');
+      modal.classList.toggle('active');
+      renderHistoryUI();
+    }
+
+    function closeHistoryOnOverlay(e) {
+      if (e.target.id === 'historyModal') {
+        toggleHistoryModal();
+      }
+    }
+
     function loginWithGoogle() {
       currentUser = { name: "Clienta Google", email: "clienta.google@gmail.com" };
       localStorage.setItem('owls_user', JSON.stringify(currentUser));
@@ -1680,6 +1732,41 @@
       });
     }
 
+    function saveOrderToHistory() {
+      let history = JSON.parse(localStorage.getItem('owls_order_history')) || [];
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const dateStr = new Date().toLocaleString('es-CL');
+
+      const orderRecord = {
+        date: dateStr,
+        items: [...cart],
+        total: total
+      };
+
+      history.unshift(orderRecord); // Añadir al inicio
+      localStorage.setItem('owls_order_history', JSON.stringify(history));
+    }
+
+    function renderHistoryUI() {
+      const container = document.getElementById('historyListContainer');
+      let history = JSON.parse(localStorage.getItem('owls_order_history')) || [];
+
+      if (history.length === 0) {
+        container.innerHTML = '<p style="color: #a89a93; font-size: 0.85rem; margin-top: 1.5rem;">No tienes pedidos registrados todavía.</p>';
+        return;
+      }
+
+      container.innerHTML = history.map(order => `
+        <div class="history-card">
+          <div class="history-date">📅 ${order.date}</div>
+          <div class="history-items">
+            ${order.items.map(i => `• ${i.qty}x ${i.title} ($${(i.price * i.qty).toLocaleString('es-CL')})`).join('<br>')}
+          </div>
+          <div class="history-total">Total: $${order.total.toLocaleString('es-CL')}</div>
+        </div>
+      `).join('');
+    }
+
     function generateOrderText() {
       let text = "Hola @somos.owlslook 🦉✨ Me interesa comprar los siguientes productos de su catálogo:\n\n";
       cart.forEach(item => {
@@ -1697,9 +1784,16 @@
         return;
       }
 
+      saveOrderToHistory();
       const text = generateOrderText();
       const encodedText = encodeURIComponent(text);
       const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedText}`;
+      
+      toggleCartModal();
+      cart = [];
+      updateCartUI();
+      renderHistoryUI();
+
       window.open(waUrl, '_blank');
     }
 
@@ -1709,10 +1803,16 @@
         return;
       }
 
+      saveOrderToHistory();
       const text = generateOrderText();
       
+      toggleCartModal();
+      cart = [];
+      updateCartUI();
+      renderHistoryUI();
+
       navigator.clipboard.writeText(text).then(() => {
-        alert("📋 ¡Mensaje copiado con éxito!\n\nAl abrirse Instagram, mantén presionado el chat y selecciona 'Pegar' para enviar tu pedido.");
+        alert("📋 ¡Pedido guardado en tu historial y texto copiado!\n\nAl abrirse Instagram, mantén presionado el chat y selecciona 'Pegar' para enviar tu pedido.");
         window.open("https://ig.me/m/somos.owlslook", "_blank");
       }).catch(err => {
         prompt("Copia este texto para tu pedido de Instagram:", text);
