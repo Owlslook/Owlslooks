@@ -33,12 +33,19 @@
       flex-direction: column;
       align-items: center;
       padding: 0 1rem 0 1rem;
+      animation: fadeInPage 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* BARRA DE NAVEGACIÓN SUPERIOR */
     .site-nav {
       width: 100%;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(181, 148, 96, 0.2);
       padding: 0.8rem 2rem;
       display: flex;
@@ -48,6 +55,7 @@
       top: 0;
       z-index: 900;
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
     }
 
     .nav-brand {
@@ -60,6 +68,11 @@
       height: 38px;
       width: auto;
       object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
     }
 
     .nav-links {
@@ -76,12 +89,13 @@
       color: #5c4a43;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.2s ease;
       cursor: pointer;
     }
 
     .nav-links a:hover {
       color: #b59460;
+      transform: translateY(-2px);
     }
 
     .container {
@@ -97,18 +111,30 @@
 
     /* HEADER */
     .catalog-header {
-      background-color: #ffffff;
-      padding: 3rem 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      background: linear-gradient(135deg, #ffffff 0%, #faf8f5 100%);
+      padding: 3.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
       width: 100%;
       text-align: center;
       border: 1px solid rgba(181, 148, 96, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .catalog-header::after {
+      content: '🦉';
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      font-size: 8rem;
+      opacity: 0.04;
+      pointer-events: none;
     }
 
     .catalog-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 3rem;
       color: #3a2e2b;
       margin-bottom: 0.5rem;
       letter-spacing: 0.03em;
@@ -139,14 +165,14 @@
       width: 100%;
       background-color: #ffffff;
       border: 1px solid rgba(181, 148, 96, 0.35);
-      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      padding: 0.9rem 1.2rem 0.9rem 3.2rem;
       border-radius: 30px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       color: #3a2e2b;
       outline: none;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .search-input::placeholder {
@@ -156,6 +182,7 @@
     .search-input:focus {
       border-color: #b59460;
       box-shadow: 0 8px 25px rgba(181, 148, 96, 0.15);
+      transform: scale(1.01);
     }
 
     .search-icon {
@@ -180,19 +207,26 @@
     .filter-btn {
       background-color: #ffffff;
       border: 1px solid rgba(181, 148, 96, 0.3);
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
+      padding: 0.6rem 1.3rem;
+      border-radius: 25px;
       font-size: 0.82rem;
       font-weight: 600;
       color: #5c4a43;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
-    .filter-btn:hover, .filter-btn.active {
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      border-color: #b59460;
+    }
+
+    .filter-btn.active {
       background-color: #3a2e2b;
       color: #f7f5f0;
       border-color: #3a2e2b;
+      box-shadow: 0 6px 16px rgba(58, 46, 43, 0.2);
     }
 
     /* GRID DE PRODUCTOS */
@@ -205,42 +239,49 @@
 
     .catalog-card {
       background-color: #ffffff;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(181, 148, 96, 0.2);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: cardAppear 0.6s ease both;
+    }
+
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .catalog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 35px rgba(181, 148, 96, 0.15);
+      border-color: rgba(181, 148, 96, 0.4);
     }
 
     .btn-fav {
       position: absolute;
       top: 12px;
       right: 12px;
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255, 255, 255, 0.9);
       border: none;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       font-size: 1.1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
       z-index: 10;
     }
 
     .btn-fav:hover {
-      transform: scale(1.1);
+      transform: scale(1.15) rotate(10deg);
       background-color: #ffffff;
     }
 
@@ -250,6 +291,11 @@
       object-fit: contain;
       background-color: #f7f5f0;
       border-bottom: 1px solid rgba(181, 148, 96, 0.15);
+      transition: transform 0.5s ease;
+    }
+
+    .catalog-card:hover .card-img {
+      transform: scale(1.03);
     }
 
     .no-photo-placeholder {
@@ -302,8 +348,8 @@
       font-weight: 600;
       color: #2e7d32;
       background-color: #e8f5e9;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
       display: inline-block;
       margin-bottom: 0.8rem;
       border: 1px solid rgba(46, 125, 50, 0.2);
@@ -316,7 +362,7 @@
       margin-bottom: 1rem;
       background-color: #f7f5f0;
       padding: 0.4rem 0.8rem;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid rgba(181, 148, 96, 0.2);
     }
 
@@ -328,15 +374,16 @@
 
     .card-qty-input {
       width: 50px;
-      padding: 0.2rem;
+      padding: 0.3rem;
       text-align: center;
       border: 1px solid #b59460;
-      border-radius: 4px;
+      border-radius: 6px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
       color: #3a2e2b;
       background-color: #ffffff;
+      outline: none;
     }
 
     .card-footer {
@@ -350,7 +397,7 @@
 
     .product-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: #3a2e2b;
     }
@@ -359,15 +406,20 @@
       background-color: #3a2e2b;
       color: #f7f5f0;
       border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 20px;
+      padding: 0.65rem 1.2rem;
+      border-radius: 25px;
       font-size: 0.78rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.1s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(58, 46, 43, 0.15);
     }
 
-    .btn-add:hover { background-color: #b59460; }
+    .btn-add:hover { 
+      background-color: #b59460; 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(181, 148, 96, 0.3);
+    }
     .btn-add:active { transform: scale(0.95); }
 
     /* SOBRE NOSOTROS Y FAQ */
@@ -376,38 +428,99 @@
       background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
       color: #f7f5f0;
       padding: 3.5rem 2.5rem;
-      border-radius: 16px;
+      border-radius: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      position: relative;
     }
 
     .about-section h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       margin-bottom: 1rem;
       color: #b59460;
     }
 
     .about-section p {
       font-size: 0.95rem;
-      line-height: 1.7;
+      line-height: 1.8;
       max-width: 700px;
       margin: 0 auto;
       color: #e8e3dc;
+    }
+
+    /* SECCIÓN DE ENCUESTA */
+    .survey-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(181, 148, 96, 0.2);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .survey-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: #3a2e2b;
+      margin-bottom: 0.5rem;
+    }
+
+    .survey-desc {
+      font-size: 0.9rem;
+      color: #6b5851;
+      margin-bottom: 1.8rem;
+    }
+
+    .survey-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .survey-btn {
+      background-color: #f7f5f0;
+      border: 1px solid #b59460;
+      padding: 0.7rem 1.4rem;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a2e2b;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .survey-btn:hover {
+      background-color: #3a2e2b;
+      color: #f7f5f0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(58, 46, 43, 0.15);
+    }
+
+    .survey-msg {
+      font-size: 0.9rem;
+      color: #2e7d32;
+      font-weight: 600;
+      margin-top: 1rem;
+      display: none;
+      animation: fadeInPage 0.4s ease;
     }
 
     .faq-section {
       width: 100%;
       background-color: #ffffff;
       padding: 3rem 2rem;
-      border-radius: 16px;
+      border-radius: 20px;
       border: 1px solid rgba(181, 148, 96, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
     }
 
     .faq-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       text-align: center;
       margin-bottom: 2rem;
       color: #3a2e2b;
@@ -421,16 +534,22 @@
 
     .faq-item {
       border: 1px solid rgba(181, 148, 96, 0.25);
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
       background-color: #faf8f5;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active {
+      box-shadow: 0 6px 20px rgba(181, 148, 96, 0.15);
+      border-color: #b59460;
     }
 
     .faq-question {
       width: 100%;
       background: none;
       border: none;
-      padding: 1.2rem;
+      padding: 1.2rem 1.5rem;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
@@ -444,9 +563,9 @@
 
     .faq-question::after {
       content: '+';
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #b59460;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .faq-item.active .faq-question::after {
@@ -456,16 +575,16 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 1.2rem;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+      padding: 0 1.5rem;
       font-size: 0.88rem;
       color: #6b5851;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .faq-item.active .faq-answer {
       max-height: 200px;
-      padding: 0 1.2rem 1.2rem 1.2rem;
+      padding: 0 1.5rem 1.5rem 1.5rem;
     }
 
     /* FOOTER */
@@ -473,7 +592,7 @@
       width: 100%;
       background-color: #2b211f;
       color: #e8e3dc;
-      padding: 3.5rem 2rem 2rem 2rem;
+      padding: 4rem 2rem 2.5rem 2rem;
       border-top: 1px solid rgba(181, 148, 96, 0.3);
       margin-top: 3rem;
     }
@@ -489,7 +608,7 @@
 
     .footer-col h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: #b59460;
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
@@ -498,20 +617,23 @@
     .footer-col p, .footer-col a {
       font-size: 0.85rem;
       color: #c5b8b0;
-      line-height: 1.6;
+      line-height: 1.7;
       text-decoration: none;
       display: block;
       margin-bottom: 0.5rem;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
-    .footer-col a:hover { color: #b59460; }
+    .footer-col a:hover { 
+      color: #b59460; 
+      transform: translateX(3px);
+    }
 
     .footer-bottom {
       max-width: 960px;
       margin: 0 auto;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
+      padding-top: 1.8rem;
       text-align: center;
       font-size: 0.78rem;
       color: #9c8a82;
@@ -520,23 +642,26 @@
     /* CARRITO Y MODALES */
     .cart-float-btn {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 30px;
+      right: 30px;
       background-color: #3a2e2b;
       color: #f7f5f0;
       border: 2px solid #b59460;
-      padding: 0.8rem 1.4rem;
+      padding: 0.9rem 1.6rem;
       border-radius: 50px;
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
       cursor: pointer;
       z-index: 1000;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .cart-float-btn:hover { background-color: #b59460; }
+    .cart-float-btn:hover { 
+      background-color: #b59460; 
+      transform: scale(1.05) translateY(-3px);
+    }
 
     .cart-count {
       background-color: #b59460;
@@ -545,19 +670,27 @@
       font-weight: 700;
       padding: 0.2rem 0.6rem;
       border-radius: 12px;
+      transition: transform 0.2s ease;
     }
 
-    .cart-float-btn.bounce { animation: bounceAnim 0.4s ease; }
-    @keyframes bounceAnim { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .cart-float-btn.bounce { animation: bounceAnim 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes bounceAnim { 
+      0% { transform: scale(1); } 
+      40% { transform: scale(1.2); } 
+      70% { transform: scale(0.95); } 
+      100% { transform: scale(1); } 
+    }
 
     .cart-modal-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
       display: none;
       justify-content: flex-end;
       z-index: 2000;
+      animation: fadeInPage 0.3s ease;
     }
 
     .cart-modal-overlay.active { display: flex; }
@@ -565,58 +698,63 @@
     .cart-drawer {
       background-color: #ffffff;
       width: 100%; max-width: 420px; height: 100%;
-      padding: 2rem 1.5rem;
+      padding: 2.5rem 1.8rem;
       display: flex; flex-direction: column;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+      box-shadow: -15px 0 40px rgba(0,0,0,0.2);
       transform: translateX(100%);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .cart-modal-overlay.active .cart-drawer { transform: translateX(0); }
 
     .cart-header {
       display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid #b59460; padding-bottom: 1rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(181, 148, 96, 0.3); padding-bottom: 1.2rem; margin-bottom: 1.5rem;
     }
 
-    .cart-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #3a2e2b; }
-    .close-cart { background: none; border: none; font-size: 1.8rem; color: #3a2e2b; cursor: pointer; }
-    .cart-items-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
-    .cart-item { display: flex; justify-content: space-between; align-items: center; background-color: #f7f5f0; padding: 0.8rem 1rem; border-radius: 8px; }
+    .cart-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #3a2e2b; }
+    .close-cart { background: none; border: none; font-size: 1.8rem; color: #3a2e2b; cursor: pointer; transition: transform 0.2s ease; }
+    .close-cart:hover { transform: scale(1.1); color: #b59460; }
+
+    .cart-items-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; padding-right: 0.3rem; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; background-color: #f7f5f0; padding: 1rem; border-radius: 12px; border: 1px solid rgba(181, 148, 96, 0.15); animation: cardAppear 0.3s ease; }
     .cart-item-title { font-size: 0.9rem; font-weight: 600; color: #3a2e2b; }
-    .cart-item-price { font-size: 0.85rem; color: #6b5851; }
-    .qty-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem; }
-    .btn-qty { background-color: #ffffff; border: 1px solid #b59460; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+    .cart-item-price { font-size: 0.85rem; color: #6b5851; margin-top: 0.2rem; }
+    .qty-controls { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+    .btn-qty { background-color: #ffffff; border: 1px solid #b59460; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #3a2e2b; transition: all 0.2s ease; }
+    .btn-qty:hover { background-color: #b59460; color: #fff; }
 
-    .cart-footer-box { border-top: 1px solid #f0eae1; padding-top: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    .cart-total { display: flex; justify-content: space-between; font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #3a2e2b; }
+    .cart-footer-box { border-top: 1px solid #f0eae1; padding-top: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cart-total { display: flex; justify-content: space-between; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #3a2e2b; }
 
-    .checkout-buttons { display: flex; flex-direction: column; gap: 0.6rem; }
-    .btn-checkout-wa { background-color: #25d366; color: #ffffff; border: none; padding: 0.9rem; border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-    .btn-checkout-wa:hover { opacity: 0.9; }
-    .btn-checkout-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #ffffff; border: none; padding: 0.9rem; border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-    .btn-checkout-ig:hover { opacity: 0.9; }
+    .checkout-buttons { display: flex; flex-direction: column; gap: 0.8rem; }
+    .btn-checkout-wa { background-color: #25d366; color: #ffffff; border: none; padding: 1rem; border-radius: 30px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; transition: opacity 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+    .btn-checkout-wa:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-checkout-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #ffffff; border: none; padding: 1rem; border-radius: 30px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; transition: opacity 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); }
+    .btn-checkout-ig:hover { opacity: 0.9; transform: translateY(-2px); }
 
     /* MODAL DE HISTORIAL */
     .auth-modal {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 3000;
+      background-color: rgba(0,0,0,0.5); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 3000;
+      animation: fadeInPage 0.3s ease;
     }
     .auth-modal.active { display: flex; }
     .auth-box {
-      background: #ffffff; padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 420px; text-align: center;
-      border: 1px solid rgba(181, 148, 96, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      background: #ffffff; padding: 2.5rem; border-radius: 20px; width: 90%; max-width: 420px; text-align: center;
+      border: 1px solid rgba(181, 148, 96, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       max-height: 85vh; overflow-y: auto;
     }
-    .auth-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #3a2e2b; margin-bottom: 0.5rem; }
-    .auth-box p { font-size: 0.85rem; color: #6b5851; margin-bottom: 1.5rem; }
-    .btn-close-auth { background: none; border: none; color: #888; margin-top: 1rem; cursor: pointer; font-size: 0.85rem; }
+    .auth-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: #3a2e2b; margin-bottom: 0.5rem; }
+    .auth-box p { font-size: 0.88rem; color: #6b5851; margin-bottom: 1.5rem; }
+    .btn-close-auth { background: none; border: none; color: #888; margin-top: 1.2rem; cursor: pointer; font-size: 0.88rem; transition: color 0.2s ease; }
+    .btn-close-auth:hover { color: #3a2e2b; }
 
     .history-card {
       background-color: #f7f5f0;
       border: 1px solid rgba(181, 148, 96, 0.3);
-      border-radius: 10px;
-      padding: 1rem;
+      border-radius: 12px;
+      padding: 1.2rem;
       margin-bottom: 1rem;
       text-align: left;
     }
@@ -629,11 +767,11 @@
     .history-items {
       font-size: 0.85rem;
       color: #3a2e2b;
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
     }
     .history-total {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #3a2e2b;
       font-family: 'Cormorant Garamond', serif;
@@ -642,6 +780,7 @@
     @media (max-width: 600px) {
       .site-nav { flex-direction: column; gap: 0.8rem; padding: 1rem; }
       .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+      .catalog-title { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -1347,6 +1486,18 @@
       </div>
     </section>
 
+    <!-- ENCUESTA DE SATISFACCIÓN / FEEDBACK -->
+    <section class="survey-section" id="encuesta">
+      <h2 class="survey-title">¿Qué te pareció nuestro catálogo? 📝</h2>
+      <p class="survey-desc">Tu opinión nos ayuda a mejorar y traer las mejores tendencias para ti.</p>
+      <div class="survey-options">
+        <button class="survey-btn" onclick="submitSurvey('😍 ¡Me encantó!')">😍 ¡Me encantó!</button>
+        <button class="survey-btn" onclick="submitSurvey('👍 Bueno, faltan más cosas')">👍 Bueno</button>
+        <button class="survey-btn" onclick="submitSurvey('💡 Sugerencia rápida')">💡 Dejar sugerencia</button>
+      </div>
+      <div class="survey-msg" id="surveyMsg">¡Muchas gracias por tu opinión! 🦉✨</div>
+    </section>
+
   </div>
 
   <!-- FOOTER PROFESIONAL -->
@@ -1480,6 +1631,17 @@
       }
     }
 
+    function submitSurvey(option) {
+      const msg = document.getElementById('surveyMsg');
+      msg.style.display = 'block';
+      if(option.includes('Sugerencia')) {
+        let suggestion = prompt("¿Qué te gustaría ver en OWLS LOOK?");
+        if(suggestion) {
+          alert("¡Muchas gracias por tu sugerencia! La tendremos muy en cuenta.");
+        }
+      }
+    }
+
     async function syncStockFromSheets() {
       try {
         const response = await fetch(SHEET_CSV_URL);
@@ -1565,7 +1727,7 @@
 
       const btn = document.getElementById('cartFloatBtn');
       btn.classList.add('bounce');
-      setTimeout(() => btn.classList.remove('bounce'), 400);
+      setTimeout(() => btn.classList.remove('bounce'), 500);
     }
 
     function changeQty(index, delta) {
