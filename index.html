@@ -23,12 +23,19 @@
       flex-direction: column;
       align-items: center;
       padding: 0 1rem 0 1rem;
+      animation: fadeInPage 0.8s ease-in-out;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR (SIN LOGO EN LA ESQUINA) */
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
     .site-nav {
       width: 100%;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(181, 148, 96, 0.2);
       padding: 0.8rem 2rem;
       display: flex;
@@ -38,6 +45,7 @@
       top: 0;
       z-index: 900;
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
     }
 
     .nav-brand {
@@ -48,10 +56,15 @@
 
     .nav-brand-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       color: #3a2e2b;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-brand-text:hover {
+      transform: scale(1.05);
     }
 
     .nav-links {
@@ -68,11 +81,12 @@
       color: #5c4a43;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
     .nav-links a:hover {
       color: #b59460;
+      transform: translateY(-2px);
     }
 
     .container {
@@ -86,21 +100,29 @@
       margin-bottom: 4rem;
     }
 
-    /* HERO / SECCIÓN PRINCIPAL CON FONDO CLARO Y LA IMAGEN COMPLETA */
+    /* HERO / SECCIÓN PRINCIPAL CON ANIMACIÓN */
     .hero-section {
-      background-color: #ffffff;
+      background: linear-gradient(135deg, #ffffff 0%, #faf8f5 100%);
       color: #3a2e2b;
-      padding: 4rem 2rem;
-      border-radius: 16px;
+      padding: 4.5rem 2rem;
+      border-radius: 20px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
       border: 1px solid rgba(181, 148, 96, 0.25);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      animation: cardAppear 0.7s ease both;
+    }
+
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-logo-img {
@@ -108,13 +130,18 @@
       width: 100%;
       height: auto;
       object-fit: contain;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-logo-img:hover {
+      transform: scale(1.03);
     }
 
     .hero-subtitle {
       font-size: 1.05rem;
       max-width: 650px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.7;
       color: #6b5851;
     }
 
@@ -122,20 +149,21 @@
       display: inline-block;
       background-color: #3a2e2b;
       color: #f7f5f0;
-      padding: 0.9rem 2.2rem;
-      border-radius: 30px;
+      padding: 1rem 2.5rem;
+      border-radius: 35px;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 6px 20px rgba(58, 46, 43, 0.2);
     }
 
     .btn-catalog:hover {
       background-color: #b59460;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(181, 148, 96, 0.35);
     }
 
     /* TARJETAS DE CARACTERÍSTICAS */
@@ -148,48 +176,61 @@
 
     .feature-card {
       background-color: #ffffff;
-      padding: 2.5rem 2rem;
+      padding: 2.8rem 2rem;
       border-radius: 16px;
       text-align: center;
       border: 1px solid rgba(181, 148, 96, 0.2);
       box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: cardAppear 0.8s ease both;
+    }
+
+    .feature-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 16px 35px rgba(181, 148, 96, 0.15);
+      border-color: rgba(181, 148, 96, 0.4);
+    }
+
+    .feature-icon { 
+      font-size: 2.8rem; 
+      margin-bottom: 1rem; 
       transition: transform 0.3s ease;
     }
 
-    .feature-card:hover { transform: translateY(-5px); }
-
-    .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.15) rotate(5deg);
+    }
 
     .feature-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #3a2e2b;
       margin-bottom: 0.8rem;
     }
 
-    .feature-desc { font-size: 0.88rem; color: #6b5851; line-height: 1.6; }
+    .feature-desc { font-size: 0.88rem; color: #6b5851; line-height: 1.7; }
 
     /* SOBRE NOSOTROS */
     .about-section {
       width: 100%;
       background: linear-gradient(135deg, #3a2e2b 0%, #5c4a43 100%);
       color: #f7f5f0;
-      padding: 3.5rem 2.5rem;
-      border-radius: 16px;
+      padding: 4rem 2.5rem;
+      border-radius: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 
     .about-section h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 1rem;
       color: #b59460;
     }
 
     .about-section p {
       font-size: 0.95rem;
-      line-height: 1.7;
+      line-height: 1.8;
       max-width: 700px;
       margin: 0 auto;
       color: #e8e3dc;
@@ -199,15 +240,15 @@
     .faq-section {
       width: 100%;
       background-color: #ffffff;
-      padding: 3rem 2rem;
-      border-radius: 16px;
+      padding: 3.5rem 2rem;
+      border-radius: 20px;
       border: 1px solid rgba(181, 148, 96, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
     }
 
     .faq-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       text-align: center;
       margin-bottom: 2rem;
       color: #3a2e2b;
@@ -217,38 +258,44 @@
 
     .faq-item {
       border: 1px solid rgba(181, 148, 96, 0.25);
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
       background-color: #faf8f5;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active {
+      box-shadow: 0 6px 20px rgba(181, 148, 96, 0.15);
+      border-color: #b59460;
     }
 
     .faq-question {
       width: 100%;
       background: none; border: none;
-      padding: 1.2rem; text-align: left;
+      padding: 1.2rem 1.5rem; text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem; font-weight: 600;
       color: #3a2e2b; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center;
     }
 
-    .faq-question::after { content: '+'; font-size: 1.2rem; color: #b59460; transition: transform 0.3s ease; }
+    .faq-question::after { content: '+'; font-size: 1.3rem; color: #b59460; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
     .faq-item.active .faq-question::after { transform: rotate(45deg); }
 
     .faq-answer {
       max-height: 0; overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 1.2rem; font-size: 0.88rem; color: #6b5851; line-height: 1.6;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+      padding: 0 1.5rem; font-size: 0.88rem; color: #6b5851; line-height: 1.7;
     }
 
-    .faq-item.active .faq-answer { max-height: 200px; padding: 0 1.2rem 1.2rem 1.2rem; }
+    .faq-item.active .faq-answer { max-height: 200px; padding: 0 1.5rem 1.5rem 1.5rem; }
 
     /* FOOTER PROFESIONAL */
     .site-footer {
       width: 100%;
       background-color: #2b211f;
       color: #e8e3dc;
-      padding: 3.5rem 2rem 2rem 2rem;
+      padding: 4rem 2rem 2.5rem 2rem;
       border-top: 1px solid rgba(181, 148, 96, 0.3);
     }
 
@@ -263,7 +310,7 @@
 
     .footer-col h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: #b59460;
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
@@ -272,20 +319,20 @@
     .footer-col p, .footer-col a {
       font-size: 0.85rem;
       color: #c5b8b0;
-      line-height: 1.6;
+      line-height: 1.7;
       text-decoration: none;
       display: block;
       margin-bottom: 0.5rem;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
-    .footer-col a:hover { color: #b59460; }
+    .footer-col a:hover { color: #b59460; transform: translateX(3px); }
 
     .footer-bottom {
       max-width: 960px;
       margin: 0 auto;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
+      padding-top: 1.8rem;
       text-align: center;
       font-size: 0.78rem;
       color: #9c8a82;
@@ -300,7 +347,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA, SIN LOGO IZQUIERDO) -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">
       <span class="nav-brand-text">OWLS LOOK</span>
@@ -315,7 +362,7 @@
 
   <div class="container">
     
-    <!-- HERO / SECCIÓN PRINCIPAL CON LA IMAGEN COMPLETA EN EL TÍTULO -->
+    <!-- HERO / SECCIÓN PRINCIPAL CON ANIMACIÓN -->
     <header class="hero-section">
       <img src="Jahdiel Álvarez_20261020_210518_0000 (1).png" alt="OWLS LOOK Logo Portada" class="hero-logo-img">
       <p class="hero-subtitle">Moda femenina exclusiva, calzado certificado y joyas de origen nacional diseñadas para resaltar tu esencia y estilo único.</p>
